@@ -1,58 +1,43 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package whatsnext;
 
+import java.util.*;
 /**
  *
  * @author kmk6138
  */
 public class User
 {
+    private HashMap<String, String> listOfUsers;
     private String username;
     private String password;
   
-    public User(String un, String pw){
-        this.username = un;
-        this.password = pw;
-        
+    //constructor
+    public User()
+    {
+        this.listOfUsers = new HashMap();
+        this.username = "";
+        this.password = "";
     }
+    public User(HashMap listOfUsers, String un, String pw){
+        this.listOfUsers = listOfUsers;
+        this.username = un;
+        this.password = pw;                
+    }
+    
+    //in this class or UserList class?
+    public HashMap populateListOfUsers()
+    {
+        listOfUsers.put("adrianne", "kubiak.pass");
+        listOfUsers.put("kristina", "kvasny.pass");
+        listOfUsers.put("phil", "chwistek.pass");
+        listOfUsers.put("zi", "yang.pass");
+        
+        System.out.println("Populated: " + listOfUsers.keySet());
+        return listOfUsers;
+    }
+    
     
     public boolean isEqual(String un, String pw){
         return un.equals(this.username) && pw.equals(this.password);
-    }
-
-    /**
-     * @return the username
-     */
-    public String getUsername()
-    {
-        return username;
-    }
-
-    /**
-     * @param username the username to set
-     */
-    public void setUsername(String username)
-    {
-        this.username = username;
-    }
-
-    /**
-     * @return the password
-     */
-    public String getPassword()
-    {
-        return password;
-    }
-
-    /**
-     * @param password the password to set
-     */
-    public void setPassword(String password)
-    {
-        this.password = password;
     }
 } 

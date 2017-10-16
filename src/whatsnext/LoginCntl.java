@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package whatsnext;
 
 import java.net.URL;
@@ -50,19 +45,22 @@ public class LoginCntl implements Initializable {
     @FXML
     private void handleSubmitButton(ActionEvent event) throws Exception {
         
+        UserList userListClass = new UserList();
         String username = theUsernameField.getText();
         String password = thePasswordField.getText();
         
-        /* do the verification stuff here */
-        
-        
-        
+        boolean loginSuccess = userListClass.verifyLogin(username, password);
+         
+        //Display nav page only if login is successful
+        if (loginSuccess == true)
+        {
         Parent theNavUI = FXMLLoader.load(getClass().getResource("NavUI.fxml"));
         Stage stage = (Stage) cancelButton.getScene().getWindow(); //to make the exit seem nicer
         stage.hide();
         Scene scene = new Scene(theNavUI);
         stage.setScene(scene);
         stage.show();
+        }
     }
     
     @Override
