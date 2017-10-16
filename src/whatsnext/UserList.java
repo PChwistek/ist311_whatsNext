@@ -1,59 +1,36 @@
 package whatsnext;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class UserList
 {
-    private HashMap<String, String> listOfUsers;
-    private User userClass;
+    private ArrayList<User> listOfUsers = new ArrayList();
     
     //constructor
     public UserList()
     {
+        listOfUsers = populateListOfUsers();
     }
     
     //Verify that the user exists
     public boolean verifyLogin(String usernameInput, String passwordInput)
     {
-        boolean loginSuccess = false;
-        boolean userExists = false;
-        
-        //check that hashmap listOfUsers contains key (username)
-        if (userExists == true)
-        {
-            //Pass boolean decision to verifyPassword (method below)
-            loginSuccess = verifyPassword(usernameInput, passwordInput);
+        for(User aUser: listOfUsers){
+            if(aUser.isEqual(usernameInput, passwordInput)){
+                return true;
+            }
         }
-        
-        return loginSuccess;
+        return false;
     }
     
-    //verify the password
-    public boolean verifyPassword(String username, String password)
+    public ArrayList<User> populateListOfUsers()
     {
-        boolean passwordCorrect = false;
-        String usernameInput = username;
-        String passwordInput = password;
-        String passwordActual = listOfUsers.get(usernameInput);
+        listOfUsers.add(new User("adrianne", "kubiak.pass"));
+        listOfUsers.add(new User("kristina", "kvasny.pass"));
+        listOfUsers.add(new User("phil", "chwistek.pass"));
+        listOfUsers.add(new User("zi", "yang.pass"));
         
-        if (passwordInput.equals(passwordActual))
-        {
-            passwordCorrect = true;
-        }
-        
-        return passwordCorrect;
-    }
-    
-       //in this class or User class?
-    public HashMap populateListOfUsers()
-    {
-        listOfUsers.put("adrianne", "kubiak.pass");
-        listOfUsers.put("kristina", "kvasny.pass");
-        listOfUsers.put("phil", "chwistek.pass");
-        listOfUsers.put("zi", "yang.pass");
-        
-        System.out.println("Populated: " + listOfUsers.keySet());
+        System.out.println("Populated: " + listOfUsers.size());
         return listOfUsers;
     }
 }

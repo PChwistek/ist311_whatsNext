@@ -22,7 +22,6 @@ public class WhatsNext extends Application {
         Parent login = FXMLLoader.load(getClass().getResource("LoginUI.fxml"));
         
         Scene scene = new Scene(login);
-        
         stage.setScene(scene);
         stage.show();
     }
