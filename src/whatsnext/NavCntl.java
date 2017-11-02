@@ -19,6 +19,7 @@ public class NavCntl {
     
     
     private Stage stage;
+    private NavUICntl theNavUICntl;
     
     public NavCntl(Stage aStage){
         this.stage = aStage;
@@ -27,7 +28,10 @@ public class NavCntl {
     
     public void setNavScene(Stage stage){
         try{
-            Parent theNavUI = FXMLLoader.load(getClass().getResource("NavUI.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("NavUI.fxml"));
+            Parent theNavUI = loader.load();
+            theNavUICntl = loader.getController();
+            theNavUICntl.setNavCntl(this);
             stage.hide();
             Scene scene = new Scene(theNavUI);
             stage.setScene(scene);

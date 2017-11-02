@@ -19,9 +19,18 @@ public class NavUICntl implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
+    private NavCntl theNavCntl;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    
+    public void setNavCntl(NavCntl aNavCntl){
+        this.theNavCntl = aNavCntl;
+    }
+    
+    
     
 }
