@@ -19,11 +19,9 @@ public class WhatsNext extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent login = FXMLLoader.load(getClass().getResource("LoginUI.fxml"));
         
-        Scene scene = new Scene(login);
-        stage.setScene(scene);
-        stage.show();
+        LoginCntl theLoginCntl = new LoginCntl(stage);
+        
     }
 
     /**
