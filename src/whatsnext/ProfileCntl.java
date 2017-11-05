@@ -19,9 +19,13 @@ public class ProfileCntl {
     
     private ProfileUICntl theProfileUICntl;
     private Stage stage;
+    private String theCurrentUser;
+    private UserList theListOfUsers;
     
-    public ProfileCntl(Stage aStage){
+    public ProfileCntl(Stage aStage, String aCurrentUser, UserList aListOfUsers){
         this.stage = aStage;
+        this.theCurrentUser = aCurrentUser;
+        this.theListOfUsers = aListOfUsers;
         setProfileScene(stage);
     }
     
@@ -40,6 +44,14 @@ public class ProfileCntl {
             e.printStackTrace();
         }
         
+    }
+    
+    public Profile getCurrentUserProfile(){
+        return theListOfUsers.getUserFromList(theCurrentUser).getProfile();
+    }
+    
+    public void updateCurrentUserProfile(Profile profileToSet){
+        theListOfUsers.getUserFromList(theCurrentUser).setProfile(profileToSet);
     }
     
 }

@@ -7,7 +7,33 @@ import java.util.*;
  */
 public class User
 {
-
+    private String username;
+    private String password;
+    private Profile profile; 
+  
+    //constructor
+    public User(){
+        this.username = "JohnDoe";
+        this.password = "pass";
+        this.profile = new Profile();
+    }
+    
+    public User(String un, String pw){
+        this.username = un;
+        this.password = pw;
+        this.profile = new Profile();
+    }
+    
+    public User(String un, String pw, Profile aProfile){
+        this.username = un;
+        this.password = pw;
+        this.profile = aProfile;
+    }
+    
+    public boolean isEqual(String un, String pw){
+        return un.equals(this.username) && pw.equals(this.password);
+    }
+    
     /**
      * @return the username
      */
@@ -35,21 +61,12 @@ public class User
     public void setPassword(String password) {
         this.password = password;
     }
-    private String username;
-    private String password;
-  
-    //constructor
-    public User()
-    {
-        this.username = "";
-        this.password = "";
-    }
-    public User(String un, String pw){
-        this.username = un;
-        this.password = pw;                
+    
+    public Profile getProfile(){
+        return this.profile;
     }
     
-    public boolean isEqual(String un, String pw){
-        return un.equals(this.getUsername()) && pw.equals(this.getPassword());
+    public void setProfile(Profile profileToSet){
+        this.profile = profileToSet;
     }
 } 

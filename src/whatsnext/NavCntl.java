@@ -20,14 +20,18 @@ public class NavCntl {
     
     private Stage stage;
     private NavUICntl theNavUICntl;
+    private String theCurrentUser;
+    private UserList theListOfUsers;
     
-    public NavCntl(Stage aStage){
+    public NavCntl(Stage aStage, String aCurrentUser, UserList aListOfUsers){
         this.stage = aStage;
         setNavScene(stage);
+        this.theCurrentUser = aCurrentUser;
+        this.theListOfUsers = aListOfUsers;
     }
     
     public void goToProfile(){
-        ProfileCntl theProfileCntl = new ProfileCntl(stage);
+        ProfileCntl theProfileCntl = new ProfileCntl(stage, theCurrentUser, theListOfUsers);
     }
     
     public void setNavScene(Stage stage){

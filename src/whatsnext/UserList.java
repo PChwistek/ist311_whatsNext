@@ -43,9 +43,17 @@ public class UserList
                 return success;
             }
         }
-        
         listOfUsers.add(userToAdd);
-        
         return success;
+    }
+    
+    public User getUserFromList(String username){
+        for(User temp: listOfUsers){
+            if(temp.getUsername().equals(username)){
+                return new User(temp.getUsername(), temp.getPassword(), temp.getProfile());
+            }
+        }
+        System.out.println("user not found in list");
+        return null;
     }
 }

@@ -5,11 +5,16 @@ import java.util.ArrayList;
 public class Profile {
    
     private ArrayList<FilterAttribute> preferences = new ArrayList();
-    private ArrayList<Profile> accountInfo = new ArrayList();
     
     private String firstName;
     private String lastName;
     private String email;
+    
+    public Profile(){
+        firstName = "";
+        lastName = "";
+        email = "";
+    }
     
     public Profile(String fn, String ln, String e){
         this.preferences = savePreferences();
@@ -20,20 +25,9 @@ public class Profile {
     
     //saves preferences from genre, keyword, and MPAA rating attribute lists into profile
     public ArrayList<FilterAttribute> savePreferences(){
-        //getPreferences().add(new FilterAttributeList().getListOfGenreAttributes().get(0));
-        //getPreferences().add(new FilterAttributeList().getListOfGenreAttributes().get(4));
-       // getPreferences().add(new FilterAttributeList().getListOfKeywordAttributes().get(0));
-       // getPreferences().add(new FilterAttributeList().getListOfKeywordAttributes().get(11));
-        //getPreferences().add(new FilterAttributeList().getListOfMPAARatingAttributes().get(3));
-        return getPreferences();
+        return null;
     }
     
-    //gets account info and saves it
-    public ArrayList<Profile> getInfo(){
-        getAccountInfo().add(new Profile("Joe", "Smith", "joesmith1@gmail.com"));
-        return getAccountInfo();
-    }
-
     /**
      * @return the preferences
      */
@@ -48,20 +42,7 @@ public class Profile {
         this.preferences = preferences;
     }
 
-    /**
-     * @return the accountInfo
-     */
-    public ArrayList<Profile> getAccountInfo() {
-        return accountInfo;
-    }
-
-    /**
-     * @param accountInfo the accountInfo to set
-     */
-    public void setAccountInfo(ArrayList<Profile> accountInfo) {
-        this.accountInfo = accountInfo;
-    }
-
+ 
     /**
      * @return the firstName
      */

@@ -27,6 +27,8 @@ public class LoginCntl {
     
     private Stage stage;
     
+    private String theCurrentUser;
+   
     
     public LoginCntl(Stage aStage){
         theListOfUsers = new UserList();
@@ -68,7 +70,8 @@ public class LoginCntl {
     public boolean authenticate(String aUsername, String aPassword){
         
         if(theListOfUsers.verifyLogin(aUsername, aPassword)){
-            NavCntl theNavCntl = new NavCntl(stage);
+            setTheCurrentUser(aUsername);
+            NavCntl theNavCntl = new NavCntl(stage, getTheCurrentUser(), theListOfUsers);
             return true;
         }             
         
@@ -78,7 +81,16 @@ public class LoginCntl {
     public boolean createNewUser(String username, String password){
         User userToCreate = new User(username, password);
         boolean success = theListOfUsers.addUserTolist(userToCreate);
+        setTheCurrentUser(username);
         return success;
+    }
+    
+    public String getTheCurrentUser(){
+        return theCurrentUser;
+    }
+    
+    public void setTheCurrentUser(String aUsername){
+        this.theCurrentUser = aUsername;
     }
     
 }
