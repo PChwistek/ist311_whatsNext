@@ -30,7 +30,7 @@
          <children>
             <Button mnemonicParsing="false" text="Find Recommendations" GridPane.halignment="CENTER" />
             <Button mnemonicParsing="false" prefWidth="141.0" text="Inbox" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" prefWidth="141.0" text="Profile" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <Button fx:id="theProfileButton" mnemonicParsing="false" onAction="#handleProfileButton" prefWidth="141.0" text="Profile" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
             <Button mnemonicParsing="false" prefWidth="141.0" text="Logout" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
          </children>
       </GridPane>

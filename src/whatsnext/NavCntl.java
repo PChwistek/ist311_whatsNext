@@ -26,6 +26,10 @@ public class NavCntl {
         setNavScene(stage);
     }
     
+    public void goToProfile(){
+        ProfileCntl theProfileCntl = new ProfileCntl(stage);
+    }
+    
     public void setNavScene(Stage stage){
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("NavUI.fxml"));

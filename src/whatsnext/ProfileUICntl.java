@@ -14,11 +14,19 @@ import javafx.fxml.Initializable;
  *
  * @author Philz zee Kill
  */
-public class ProfileUIController implements Initializable {
+public class ProfileUICntl implements Initializable {
 
     /**
      * Initializes the controller class.
      */
+    
+    private ProfileCntl theProfileCntl;
+    
+    
+    public void setProfileCntl(ProfileCntl aProfileCntl){
+        this.theProfileCntl = aProfileCntl;
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
