@@ -33,4 +33,19 @@ public class UserList
         System.out.println("Populated: " + listOfUsers.size());
         return listOfUsers;
     }
+    
+    public boolean addUserTolist(User userToAdd){
+        boolean success = true;
+        for(User temp: listOfUsers){
+            boolean sameUsername = temp.getUsername().equals(userToAdd.getUsername());
+            if(sameUsername){
+                success = false;
+                return success;
+            }
+        }
+        
+        listOfUsers.add(userToAdd);
+        
+        return success;
+    }
 }

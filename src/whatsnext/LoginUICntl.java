@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -36,6 +37,9 @@ public class LoginUICntl implements Initializable {
     
     @FXML
     private Button submitButton;
+    
+    @FXML
+    private Text createAccount;
     
     private LoginCntl theLoginCntl;
     
@@ -63,6 +67,11 @@ public class LoginUICntl implements Initializable {
             alert.setContentText("Please re-enter your username and password");
             alert.showAndWait();
         }
+    }
+    
+    @FXML
+    private void handleCreateAccount(){
+        theLoginCntl.setCreateAccountScene((Stage)cancelButton.getScene().getWindow());
     }
     
     public void setLoginCntl(LoginCntl aLoginCntl){

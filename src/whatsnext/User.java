@@ -7,6 +7,34 @@ import java.util.*;
  */
 public class User
 {
+
+    /**
+     * @return the username
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username the username to set
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    /**
+     * @return the password
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * @param password the password to set
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
     private String username;
     private String password;
   
@@ -22,6 +50,6 @@ public class User
     }
     
     public boolean isEqual(String un, String pw){
-        return un.equals(this.username) && pw.equals(this.password);
+        return un.equals(this.getUsername()) && pw.equals(this.getPassword());
     }
 } 

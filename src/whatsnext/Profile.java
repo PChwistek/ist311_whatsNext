@@ -20,11 +20,11 @@ public class Profile {
     
     //saves preferences from genre, keyword, and MPAA rating attribute lists into profile
     public ArrayList<FilterAttribute> savePreferences(){
-        getPreferences().add(new FilterAttributeList().getListOfGenreAttributes().get(0));
-        getPreferences().add(new FilterAttributeList().getListOfGenreAttributes().get(4));
-        getPreferences().add(new FilterAttributeList().getListOfKeywordAttributes().get(0));
-        getPreferences().add(new FilterAttributeList().getListOfKeywordAttributes().get(11));
-        getPreferences().add(new FilterAttributeList().getListOfMPAARatingAttributes().get(3));
+        //getPreferences().add(new FilterAttributeList().getListOfGenreAttributes().get(0));
+        //getPreferences().add(new FilterAttributeList().getListOfGenreAttributes().get(4));
+       // getPreferences().add(new FilterAttributeList().getListOfKeywordAttributes().get(0));
+       // getPreferences().add(new FilterAttributeList().getListOfKeywordAttributes().get(11));
+        //getPreferences().add(new FilterAttributeList().getListOfMPAARatingAttributes().get(3));
         return getPreferences();
     }
     

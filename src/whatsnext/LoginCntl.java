@@ -23,6 +23,8 @@ public class LoginCntl {
     
     private LoginUICntl theLoginUICntl;
     
+    private CreateAccountUICntl theCreateAccountUICntl;
+    
     private Stage stage;
     
     
@@ -30,7 +32,6 @@ public class LoginCntl {
         theListOfUsers = new UserList();
         this.stage = aStage;
         setLoginScene(stage);
-    
     }
     
     public void setLoginScene(Stage stage){
@@ -47,7 +48,21 @@ public class LoginCntl {
         } catch (IOException e){
             e.printStackTrace();
         }
-      
+    }
+    
+    public void setCreateAccountScene(Stage stage){
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("CreateAccountUI.fxml"));
+            Parent login = loader.load();
+            theCreateAccountUICntl = loader.getController();
+            theCreateAccountUICntl.setLoginCntl(this);
+            Scene scene = new Scene(login);
+            stage.setScene(scene);
+            stage.show();
+            
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
     
     public boolean authenticate(String aUsername, String aPassword){
@@ -58,6 +73,12 @@ public class LoginCntl {
         }             
         
         return false;
+    }
+    
+    public boolean createNewUser(String username, String password){
+        User userToCreate = new User(username, password);
+        boolean success = theListOfUsers.addUserTolist(userToCreate);
+        return success;
     }
     
 }

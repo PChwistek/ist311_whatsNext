@@ -20,5 +20,6 @@ public class FilterAttributeList {
     
     public ArrayList<FilterAttribute> populateAttributeList(){
         //listOfAttributes.add(new Genre("Mysterious", "Genre", "Mood", ))
+        return null;
     }
 }
