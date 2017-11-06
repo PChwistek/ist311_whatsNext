@@ -21,12 +21,17 @@ public class ProfileCntl {
     private Stage stage;
     private String theCurrentUser;
     private UserList theListOfUsers;
+    private NavCntl theNavCntl;
     
     public ProfileCntl(Stage aStage, String aCurrentUser, UserList aListOfUsers){
         this.stage = aStage;
         this.theCurrentUser = aCurrentUser;
         this.theListOfUsers = aListOfUsers;
         setProfileScene(stage);
+    }
+    
+    public void goToNav(){
+        NavCntl theNavCntl = new NavCntl(stage, theCurrentUser, theListOfUsers);
     }
     
     public void setProfileScene(Stage stage){

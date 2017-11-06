@@ -7,8 +7,10 @@ package whatsnext;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 /**
@@ -31,6 +33,9 @@ public class ProfileUICntl implements Initializable {
     @FXML
     private TextField email;
     
+    @FXML
+    private Button cancelButton;
+    
     
     private ProfileCntl theProfileCntl;
     
@@ -45,6 +50,19 @@ public class ProfileUICntl implements Initializable {
         firstName.setText(theUserProfile.getFirstName());
         lastName.setText(theUserProfile.getLastName());
         email.setText(theUserProfile.getEmail());
+    }
+    
+    public void handleSubmitButton(ActionEvent event){
+        theUserProfile.setFirstName(firstName.getText());
+        theUserProfile.setLastName(lastName.getText());
+        theUserProfile.setEmail(email.getText());
+        
+        System.out.println(firstName.getText() + " " + lastName.getText() + ", " + email.getText());
+        
+    }
+    
+    public void handleCancelButton(ActionEvent event){
+        theProfileCntl.goToNav();
     }
     
     @Override
