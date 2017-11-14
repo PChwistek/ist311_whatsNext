@@ -40,7 +40,7 @@ public class ProfileCntl {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfileUI.fxml"));
             Parent login = loader.load();
             theProfileUICntl = loader.getController();
-                theProfileUICntl.setProfileCntl(this);
+            theProfileUICntl.setProfileCntl(this);
             Scene scene = new Scene(login);
             stage.setScene(scene);
             stage.show();

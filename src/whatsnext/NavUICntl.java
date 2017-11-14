@@ -26,8 +26,6 @@ public class NavUICntl implements Initializable {
     @FXML
     private Button theProfileButton;
     
-    private Button theHistoryButton;
-    
     private NavCntl theNavCntl;
     
     @Override
@@ -37,10 +35,6 @@ public class NavUICntl implements Initializable {
     
     public void handleProfileButton(ActionEvent event){
         theNavCntl.goToProfile();
-    }
-    
-    public void handleHistoryButton(ActionEvent event){
-        theNavCntl.goToHistory();
     }
     
     public void setNavCntl(NavCntl aNavCntl){

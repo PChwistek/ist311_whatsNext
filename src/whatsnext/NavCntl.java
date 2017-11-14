@@ -34,10 +34,6 @@ public class NavCntl {
         ProfileCntl theProfileCntl = new ProfileCntl(stage, theCurrentUser, theListOfUsers);
     }
     
-    public void goToHistory(){
-        HistoryCntl theHistoryCntl = new HistoryCntl(stage, theCurrentUser, theListOfUsers);
-    }
-    
     public void setNavScene(Stage stage){
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("NavUI.fxml"));
