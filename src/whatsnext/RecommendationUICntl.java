@@ -22,36 +22,7 @@ import javafx.scene.control.TextField;
  */
 public class RecommendationUICntl implements Initializable {
 
-    @FXML
-    private TextField searchField;
-    
-    @FXML
-    private CheckBox incognitoChkBox;
-    
-    @FXML
-    private TableView<?> attributeTable;
-    
-    @FXML
-    private TableColumn<?, ?> attributeColumn;
-    
-    @FXML
-    private TableColumn<?, ?> relevanceColumn;
-    
-    @FXML
-    private CheckBox posFilterChkBox;
-    
-    @FXML
-    private CheckBox negFilterChkBox;
-    
-    @FXML
-    private TableView<?> resultsTable;
-    
-    @FXML
-    private TableColumn<?, ?> searchResultsColumn;
-    
-    @FXML
-    private Button cancelButton;
-    
+  
     private RecommendationCntl theRecCntl = null;
 
     /**
