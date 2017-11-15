@@ -38,11 +38,16 @@ public class NavCntl {
     }
     
     public void goToProfile(){
-        ProfileCntl theProfileCntl = new ProfileCntl(stage);
+        ProfileCntl theProfileCntl = new ProfileCntl(this.stage);
     }
     
     public void goToHistory(){
-        HistoryCntl theHistoryCntl = new HistoryCntl(stage);
+        HistoryCntl theHistoryCntl = new HistoryCntl(this.stage);
+    }
+    
+    public void closeApp(){
+        this.stage.close();
+        System.exit(0);
     }
     
     public void setNavScene(Stage stage){
@@ -50,11 +55,11 @@ public class NavCntl {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("NavUI.fxml"));
             Parent theNavUI = loader.load();
             theNavUICntl = loader.getController();
+            theNavUICntl.setNavCntl(this);
             stage.hide();
             Scene scene = new Scene(theNavUI);
             stage.setScene(scene);
             stage.show();
-            System.out.println("here");
         } catch (IOException e){
             e.printStackTrace();
         }

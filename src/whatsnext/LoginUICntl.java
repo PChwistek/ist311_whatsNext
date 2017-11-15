@@ -45,9 +45,7 @@ public class LoginUICntl implements Initializable {
     
     @FXML
     private void handleCancelButton(ActionEvent event) {
-        Stage stage = (Stage) cancelButton.getScene().getWindow(); //to make the exit seem nicer
-        stage.close();
-        System.exit(0);
+        theLoginCntl.closeApp();
     }
     
     @FXML

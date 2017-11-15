@@ -80,6 +80,11 @@ public class LoginCntl {
         return false;
     }
     
+    public void closeApp(){
+        stage.close();
+        System.exit(0);
+    }
+    
     public boolean createNewUser(String username, String password){
         User userToCreate = new User(username, password);
         boolean success = theListOfUsers.addUserTolist(userToCreate);

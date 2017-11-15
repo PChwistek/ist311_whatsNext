@@ -31,26 +31,38 @@ public class NavUICntl implements Initializable {
     private Button theHistoryButton;
     
     @FXML
+    private Button theLogoutButton;
+    
+    @FXML
+    private Button theRecommendationButton;
+    
     private NavCntl theNavCntl = null;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+
     }
     
+    @FXML
+    public void handleRecommendationButton(ActionEvent event){
+        //
+    }
+    @FXML
     public void handleProfileButton(ActionEvent event){
-        theNavCntl = NavCntl.getNavCntl((Stage) theProfileButton.getScene().getWindow());
         theNavCntl.goToProfile();
     }
     
+    @FXML
     public void handleHistoryButton(ActionEvent event){
-        theNavCntl = NavCntl.getNavCntl((Stage) theHistoryButton.getScene().getWindow());
         theNavCntl.goToHistory();
     }
     
-    public void setNavCntl(Stage aStage){
+    @FXML
+    public void handleCloseButton(ActionEvent event){
+        theNavCntl.closeApp();
     }
     
-    
-    
+    public void setNavCntl(NavCntl aNavCntl){
+        this.theNavCntl = aNavCntl;
+    }    
 }
