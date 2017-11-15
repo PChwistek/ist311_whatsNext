@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -21,18 +22,18 @@
       <HBox layoutX="167.0" layoutY="69.0" prefHeight="34.0" prefWidth="301.0">
          <children>
             <Label text="Search:" />
-            <TextField />
-            <CheckBox mnemonicParsing="false" text="Incognito" />
+            <TextField fx:id="searchField" />
+            <CheckBox fx:id="incognitoChkBox" mnemonicParsing="false" text="Incognito" />
          </children>
       </HBox>
       <ScrollPane layoutX="138.0" layoutY="119.0" prefHeight="90.0" prefWidth="155.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="164.0" prefWidth="143.0">
                <children>
-                  <TableView prefHeight="170.0" prefWidth="143.0">
+                  <TableView fx:id="attributeTable" prefHeight="170.0" prefWidth="143.0">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="Attributes" />
-                      <TableColumn prefWidth="67.0" text="Relevance " />
+                      <TableColumn fx:id="attributeColumn" prefWidth="75.0" text="Attributes" />
+                      <TableColumn fx:id="relevanceColumn" prefWidth="67.0" text="Relevance " />
                     </columns>
                   </TableView>
                </children>
@@ -40,20 +41,21 @@
         </content>
       </ScrollPane>
       <Label layoutX="318.0" layoutY="119.0" text="Select for attribute relevance:" />
-      <CheckBox layoutX="318.0" layoutY="140.0" mnemonicParsing="false" text="Positive attribute" />
-      <CheckBox layoutX="318.0" layoutY="170.0" mnemonicParsing="false" text="Negative attribute" />
+      <CheckBox fx:id="posFilterChkBox" layoutX="318.0" layoutY="140.0" mnemonicParsing="false" text="Positive attribute" />
+      <CheckBox fx:id="negFilterChkBox" layoutX="318.0" layoutY="170.0" mnemonicParsing="false" text="Negative attribute" />
       <ScrollPane layoutX="88.0" layoutY="231.0" prefHeight="223.0" prefWidth="460.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="344.0" prefWidth="447.0">
                <children>
-                  <TableView layoutX="-6.0" prefHeight="200.0" prefWidth="460.0">
+                  <TableView fx:id="resultsTable" layoutX="-6.0" prefHeight="200.0" prefWidth="460.0">
                     <columns>
-                      <TableColumn prefWidth="199.0" text="Search Results" />
+                      <TableColumn fx:id="searchResultsColumn" prefWidth="199.0" text="Search Results" />
                     </columns>
                   </TableView>
                </children>
             </AnchorPane>
         </content>
       </ScrollPane>
+      <Button fx:id="cancelButton" layoutX="15.0" layoutY="415.0" mnemonicParsing="false" text="Cancel" />
    </children>
 </AnchorPane>
