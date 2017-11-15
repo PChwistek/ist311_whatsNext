@@ -45,7 +45,7 @@ public class NavUICntl implements Initializable {
     
     @FXML
     public void handleRecommendationButton(ActionEvent event){
-        //
+        theNavCntl.goToRecommendation();
     }
     @FXML
     public void handleProfileButton(ActionEvent event){

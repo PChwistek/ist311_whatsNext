@@ -45,6 +45,10 @@ public class NavCntl {
         HistoryCntl theHistoryCntl = new HistoryCntl(this.stage);
     }
     
+    public void goToRecommendation(){
+        RecommendationCntl theRecCntl = new RecommendationCntl(this.stage);
+    }
+    
     public void closeApp(){
         this.stage.close();
         System.exit(0);
