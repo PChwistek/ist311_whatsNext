@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -26,9 +27,11 @@ public class NavUICntl implements Initializable {
     @FXML
     private Button theProfileButton;
     
+    @FXML
     private Button theHistoryButton;
     
-    private NavCntl theNavCntl;
+    @FXML
+    private NavCntl theNavCntl = null;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -36,15 +39,16 @@ public class NavUICntl implements Initializable {
     }
     
     public void handleProfileButton(ActionEvent event){
+        theNavCntl = NavCntl.getNavCntl((Stage) theProfileButton.getScene().getWindow());
         theNavCntl.goToProfile();
     }
     
     public void handleHistoryButton(ActionEvent event){
+        theNavCntl = NavCntl.getNavCntl((Stage) theHistoryButton.getScene().getWindow());
         theNavCntl.goToHistory();
     }
     
-    public void setNavCntl(NavCntl aNavCntl){
-        this.theNavCntl = aNavCntl;
+    public void setNavCntl(Stage aStage){
     }
     
     

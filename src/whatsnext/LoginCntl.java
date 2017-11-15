@@ -71,7 +71,9 @@ public class LoginCntl {
         
         if(theListOfUsers.verifyLogin(aUsername, aPassword)){
             setTheCurrentUser(aUsername);
-            NavCntl theNavCntl = new NavCntl(stage, getTheCurrentUser(), theListOfUsers);
+            NavCntl theNavCntl = NavCntl.getNavCntl(this.stage);
+            theNavCntl.setTheCurrentUser(theCurrentUser); //this is temporary as we don't yet have a persistent data controller
+            theNavCntl.setTheListOfUsers(theListOfUsers); // same as above
             return true;
         }             
         

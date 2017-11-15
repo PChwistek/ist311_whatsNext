@@ -20,17 +20,18 @@ public class HistoryCntl
     private UserList theListOfUsers;
     private NavCntl theNavCntl;
     
-    public HistoryCntl(Stage aStage, String aCurrentUser, UserList aListOfUsers)
+    public HistoryCntl(Stage aStage)
     {
         this.stage = aStage;
-        this.theCurrentUser = aCurrentUser;
-        this.theListOfUsers = aListOfUsers;
+        theNavCntl = NavCntl.getNavCntl(aStage);
+        this.theCurrentUser = theNavCntl.getTheCurrentUser();
+        this.theListOfUsers = theNavCntl.getTheListOfUsers();
         setHistoryScene(stage);
     }
     
     public void goToNav()
     {
-        NavCntl theNavCntl = new NavCntl(stage, theCurrentUser, theListOfUsers);
+        theNavCntl.setNavScene(this.stage);
     }
     
     public void setHistoryScene(Stage stage)

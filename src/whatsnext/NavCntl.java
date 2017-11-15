@@ -22,20 +22,27 @@ public class NavCntl {
     private NavUICntl theNavUICntl;
     private String theCurrentUser;
     private UserList theListOfUsers;
+    private static NavCntl theNavCntl = null;
     
-    public NavCntl(Stage aStage, String aCurrentUser, UserList aListOfUsers){
+    private NavCntl(Stage aStage){
         this.stage = aStage;
         setNavScene(stage);
-        this.theCurrentUser = aCurrentUser;
-        this.theListOfUsers = aListOfUsers;
+    }
+    
+    public static NavCntl getNavCntl(Stage aStage){
+        if(theNavCntl == null){
+            theNavCntl = new NavCntl(aStage);
+        }
+        
+        return theNavCntl;
     }
     
     public void goToProfile(){
-        ProfileCntl theProfileCntl = new ProfileCntl(stage, theCurrentUser, theListOfUsers);
+        ProfileCntl theProfileCntl = new ProfileCntl(stage);
     }
     
     public void goToHistory(){
-        HistoryCntl theHistoryCntl = new HistoryCntl(stage, theCurrentUser, theListOfUsers);
+        HistoryCntl theHistoryCntl = new HistoryCntl(stage);
     }
     
     public void setNavScene(Stage stage){
@@ -43,7 +50,6 @@ public class NavCntl {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("NavUI.fxml"));
             Parent theNavUI = loader.load();
             theNavUICntl = loader.getController();
-            theNavUICntl.setNavCntl(this);
             stage.hide();
             Scene scene = new Scene(theNavUI);
             stage.setScene(scene);
@@ -52,5 +58,33 @@ public class NavCntl {
         } catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    /**
+     * @return the theCurrentUser
+     */
+    public String getTheCurrentUser() {
+        return theCurrentUser;
+    }
+
+    /**
+     * @param theCurrentUser the theCurrentUser to set
+     */
+    public void setTheCurrentUser(String theCurrentUser) {
+        this.theCurrentUser = theCurrentUser;
+    }
+
+    /**
+     * @return the theListOfUsers
+     */
+    public UserList getTheListOfUsers() {
+        return theListOfUsers;
+    }
+
+    /**
+     * @param theListOfUsers the theListOfUsers to set
+     */
+    public void setTheListOfUsers(UserList theListOfUsers) {
+        this.theListOfUsers = theListOfUsers;
     }
 }
