@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Profile {
    
-    private ArrayList<FilterAttribute> preferences = new ArrayList();
+    private ArrayList<Filterable> preferences = new ArrayList();
     
     private String firstName;
     private String lastName;
@@ -24,21 +24,21 @@ public class Profile {
     }
     
     //saves preferences from genre, keyword, and MPAA rating attribute lists into profile
-    public ArrayList<FilterAttribute> savePreferences(){
+    public ArrayList<Filterable> savePreferences(){
         return null;
     }
     
     /**
      * @return the preferences
      */
-    public ArrayList<FilterAttribute> getPreferences() {
+    public ArrayList<Filterable> getPreferences() {
         return preferences;
     }
 
     /**
      * @param preferences the preferences to set
      */
-    public void setPreferences(ArrayList<FilterAttribute> preferences) {
+    public void setPreferences(ArrayList<Filterable> preferences) {
         this.preferences = preferences;
     }
 

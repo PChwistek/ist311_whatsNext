@@ -9,15 +9,24 @@ package whatsnext;
  *
  * @author kristinakvasny
  */
-public class Keyword extends FilterAttribute {
+public class Keyword implements Filterable {
 
     private String keyword;
     private String keywordType;
     
     public Keyword(String an, String ac, String k, String kt) {
-        super(an, ac);
         this.keyword = k;
         this.keywordType = kt;
+    }
+    
+    @Override
+    public String getType() {
+        return this.keywordType;
+    }
+
+    @Override
+    public String getName() {
+        return this.keyword;
     }
 
     /**
@@ -47,5 +56,4 @@ public class Keyword extends FilterAttribute {
     public void setKeywordType(String keywordType) {
         this.keywordType = keywordType;
     }
-    
 }

@@ -9,15 +9,24 @@ package whatsnext;
  *
  * @author kristinakvasny
  */
-public class MPAARating extends FilterAttribute{
+public class MPAARating implements Filterable{
 
     private String rating;
     private String ageRating;
     
-    public MPAARating(String an, String ac, String r, String ar) {
-        super(an, ac);
+    public MPAARating(String r, String ar) {
         this.rating = r;
         this.ageRating = ar;
+    }
+    
+    @Override
+    public String getType() {
+        return "MPAA Rating";
+    }
+
+    @Override
+    public String getName() {
+        return this.rating;
     }
 
     /**

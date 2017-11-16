@@ -12,14 +12,17 @@ import java.util.ArrayList;
  * @author kristinakvasny
  */
 public class FilterAttributeList {
-    ArrayList<FilterAttribute> listOfAttributes = new ArrayList();
+    ArrayList<Filterable> listOfAttributes = new ArrayList();
     
     public FilterAttributeList(){
         
     }
     
-    public ArrayList<FilterAttribute> populateAttributeList(){
-        //listOfAttributes.add(new Genre("Mysterious", "Genre", "Mood", ))
+    public ArrayList<Filterable> populateAttributeList(){
         return null;
+    }
+    
+    public void addAttribute(Filterable anAttribute){
+        this.listOfAttributes.add(anAttribute);
     }
 }

@@ -9,15 +9,24 @@ package whatsnext;
  *
  * @author kristinakvasny
  */
-public class Genre extends FilterAttribute{
+public class Genre implements Filterable{
     
     private String genreName;
     private String genreEmotion;
 
-    public Genre(String an, String ac, String gn, String ge) {
-        super(an, ac);
+    public Genre(String gn, String ge) {
         this.genreName = gn;
         this.genreEmotion = ge;
+    }
+    
+    @Override
+    public String getType() {
+        return "Genre"; //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getName() {
+        return this.genreName;
     }
 
     
