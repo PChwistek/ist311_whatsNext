@@ -65,6 +65,12 @@ public class RecommendationUICntl implements Initializable {
     private Label recommendationIndex;
     
     @FXML
+    private Label theTitle;
+    
+    @FXML
+    private Label matches;
+    
+    @FXML
     private TableView<FilterAttribute> filterAttributeTable = new TableView();
     
     @FXML
@@ -128,12 +134,16 @@ public class RecommendationUICntl implements Initializable {
     
     @FXML
     public void handleSearchButton(ActionEvent event){
+        if(recommendedItems != null){
+            recommendedItems.clear();
+        }
         recommendedItems = theRecCntl.makeRecommendations(filmToggled, listOfFilterAttributes);
         
         if(recommendedItems.size() > 0){
             helpText.setVisible(false);
             recommendationDetail.setVisible(true);
             indexOfRecommendation = 0;
+            fillMediaInformation(recommendedItems.get(indexOfRecommendation));
         }
     }
     
@@ -175,14 +185,25 @@ public class RecommendationUICntl implements Initializable {
         recommendationIndex.setText((indexOfRecommendation + 1) + "/" + recommendedItems.size());
         
         if(aRecommendation.getType() == MediaType.FILM){
-            Movie filmToShow = (Movie) aRecommendation.getMediaToRecommend();
+            Movie filmToShow = (Movie) aRecommendation.getMediaToRecommend(); //casting is very important here
+            theTitle.setText(filmToShow.getTitle());
             
         } else {
             Book bookToShow = (Book) aRecommendation.getMediaToRecommend();
-            
+            theTitle.setText(bookToShow.getTitle());
         }
         
+        String matched = " ";
         
+        for(int i = 0; i < aRecommendation.getMatchedAttributes().size(); i++){
+            if(i + 1 == aRecommendation.getMatchedAttributes().size()){
+                matched = matched + aRecommendation.getMatchedAttributes().get(i).getName() + " ";
+            } else {
+                matched = matched + aRecommendation.getMatchedAttributes().get(i).getName() + ", ";
+            }
+        }
+
+        matches.setText("Matched Filter Attributes" + "(" + aRecommendation.getMatchedAttributes().size() + "):" + matched);
     }
     
     
@@ -190,13 +211,27 @@ public class RecommendationUICntl implements Initializable {
         
         FilterAttribute temp = null;
         
+        boolean inTable = false;
+        
         if(sentimentComboBox.getValue() == "Positive"){
             temp = new FilterAttribute(attributeField.getText(), FilterAttribute.Sentiment.POSITIVE);
         } else {
             temp = new FilterAttribute(attributeField.getText(), FilterAttribute.Sentiment.NEGATIVE);
         }
-        filterAttributeTable.getItems().add(temp);
-        System.out.println(attributeField.getText());
+        
+        int counter = 0;
+        while(!inTable && counter < filterAttributeTable.getItems().size()){
+            if(temp.getName().equals(filterAttributeTable.getItems().get(counter).getName())){
+                inTable = true;
+            } 
+            counter++;
+        }
+        
+        if(!inTable){
+            filterAttributeTable.getItems().add(temp);
+            System.out.println(attributeField.getText());
+        }
+        
         searchButton.setDisable(false);
         removeButton.setDisable(false);
     }

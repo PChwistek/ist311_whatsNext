@@ -71,11 +71,11 @@ public class RecommendationCntl {
     public ArrayList<Recommendation> makeRecommendations(boolean filmToggled, ObservableList<FilterAttribute> filterAttributeList){
         
         int numPros = 0;
-        int[] total = new int[4];
         FilterAttribute[] userFilters = new FilterAttribute[filterAttributeList.size()];
         filterAttributeList.toArray(userFilters);
         ArrayList<? extends Media> mediaToSearch = null;
-
+        Recommendation temp = null;
+        
         ArrayList<Recommendation> mediaToRecommend = new ArrayList(); 
         
         if(filmToggled){
@@ -86,28 +86,40 @@ public class RecommendationCntl {
         
         //bad algorithm O(n^3) but oh well
         for(Media item: mediaToSearch){
-            ArrayList<Filterable> mediaFilters = new ArrayList();
-            mediaFilters = item.getTheFilterAttributeList().listOfAttributes;
+            ArrayList<Filterable> mediaFilters = null;
+            ArrayList<FilterAttribute> matchedAttributes = new ArrayList();
+            mediaFilters = (ArrayList<Filterable>)item.getTheFilterAttributeList().listOfAttributes.clone(); //otherwise modifies the real one
             mediaFilters.addAll(item.getTheProductionPersonList().getTheProductionPersonList());
-
+            
             for(Filterable filter: mediaFilters){
                 for(FilterAttribute att: userFilters){
                     if(att.getName().equalsIgnoreCase(filter.getName())){
                         if(att.getSent() == FilterAttribute.Sentiment.POSITIVE){
                             numPros += 1;
+                            matchedAttributes.add(att);
                         } else {
                             numPros -= 1;
                         }
                     }
                 }
             }
-            Recommendation temp = new Recommendation(item, numPros, Recommendation.MediaType.FILM);
+            if(filmToggled){
+                temp = new Recommendation(item, numPros, Recommendation.MediaType.FILM);
+                temp.setMatchedAttributes(matchedAttributes);
+            } else {
+                temp = new Recommendation(item, numPros, Recommendation.MediaType.BOOK);
+                temp.setMatchedAttributes(matchedAttributes);
+            }
             mediaToRecommend.add(temp);
             numPros = 0;
         } 
         
         mediaToRecommend.sort(new MyRecommendationComp());
         
+        for(Recommendation r: mediaToRecommend ){
+            System.out.println(r.getMediaToRecommend().getTitle() + ";" + r.getStrength());
+        }
+        System.out.println(" ============================== ");
         return mediaToRecommend;
     }
     

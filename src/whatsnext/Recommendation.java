@@ -5,6 +5,7 @@
  */
 package whatsnext;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 
 /**
@@ -16,6 +17,7 @@ public class Recommendation {
     private Media mediaToRecommend;
     private int strength;
     private MediaType type;
+    private ArrayList<FilterAttribute> matchedAttributes = null;
     
     public enum MediaType{
         FILM, BOOK
@@ -67,6 +69,20 @@ public class Recommendation {
      */
     public void setType(MediaType type) {
         this.type = type;
+    }
+
+    /**
+     * @return the matchedAttributes
+     */
+    public ArrayList<FilterAttribute> getMatchedAttributes() {
+        return matchedAttributes;
+    }
+
+    /**
+     * @param matchedAttributes the matchedAttributes to set
+     */
+    public void setMatchedAttributes(ArrayList<FilterAttribute> matchedAttributes) {
+        this.matchedAttributes = matchedAttributes;
     }
     
     
