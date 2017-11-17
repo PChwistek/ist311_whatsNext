@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 public class HistoryUICntl implements Initializable
 {
     @FXML
-    private Button cancelButton;
+    private Button backToNavButton;
     
     private HistoryCntl theHistoryCntl;
     private ProfileCntl theProfileCntl;
@@ -33,7 +33,7 @@ public class HistoryUICntl implements Initializable
         System.out.println("ProfileCntl in histUICntl set");
     }
     
-    public void handleCancelButton(ActionEvent event)
+    public void handleBackToNavButton(ActionEvent event)
     {
         theHistoryCntl.goToNav();
     }

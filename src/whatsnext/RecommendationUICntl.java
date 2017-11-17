@@ -50,6 +50,9 @@ public class RecommendationUICntl implements Initializable {
     private Button previousButton;
     
     @FXML
+    private Button backToNavButton;
+    
+    @FXML
     private TextField attributeField;
     
     @FXML
@@ -260,7 +263,10 @@ public class RecommendationUICntl implements Initializable {
         theRecCntl = aRecCntl;
     }
     
-    
+    public void handleBackToNavButton(ActionEvent event)
+    {
+        theRecCntl.goToNav();
+    }
     
     
 }

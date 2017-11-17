@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="702.0" prefWidth="1102.0" stylesheets="@whatsNextStyles.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="whatsnext.RecommendationUICntl">
+<AnchorPane id="AnchorPane" prefHeight="702.0" prefWidth="1102.0" stylesheets="@whatsNextStyles.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="whatsnext.RecommendationUICntl">
    <children>
       <Label layoutX="15.0" layoutY="13.0" text="Recommendation">
          <font>
@@ -75,6 +75,7 @@
               </rowConstraints>
                <children>
                   <Button fx:id="removeButton" disable="true" mnemonicParsing="false" onAction="#removeFromTable" text="Remove" GridPane.halignment="CENTER" />
+                  <Button mnemonicParsing="false" onAction="#handleBackToNavButton" text="Back to Nav" />
                </children>
             </GridPane>
          </children>

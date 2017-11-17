@@ -3,11 +3,16 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9" fx:controller="whatsnext.HistoryUICntl">
+<AnchorPane id="AnchorPane" prefHeight="702.0" prefWidth="1102.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="whatsnext.HistoryUICntl">
    <children>
-      <Button layoutX="254.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleCancelButton" text="Back to Nav" />
+      <Button layoutX="27.0" layoutY="628.0" mnemonicParsing="false" onAction="#handleBackToNavButton" text="Back to Nav" />
       <Label layoutX="221.0" layoutY="148.0" prefHeight="17.0" prefWidth="159.0" text="Still under construction" />
+      <Label layoutX="25.0" layoutY="23.0" text="History">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
