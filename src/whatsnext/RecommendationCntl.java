@@ -128,7 +128,7 @@ public class RecommendationCntl {
     
     public void addToViewed(Recommendation theRec)
     {
-
+        System.out.println("Viewed " + theRec.getMediaToRecommend().getTitle());
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Calendar cal = Calendar.getInstance();
         theRec.getMediaToRecommend().setDateViewedString(dateFormat.format(cal.getTime()));
