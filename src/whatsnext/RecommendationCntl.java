@@ -6,6 +6,9 @@
 package whatsnext;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Comparator;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -63,6 +66,63 @@ public class RecommendationCntl {
     
     public void updateCurrentUserProfile(Profile profileToSet){
         theListOfUsers.getUserFromList(theCurrentUser).setProfile(profileToSet);
+    }
+    
+    public ArrayList<Recommendation> makeRecommendations(boolean filmToggled, ObservableList<FilterAttribute> filterAttributeList){
+        
+        int numPros = 0;
+        int[] total = new int[4];
+        FilterAttribute[] userFilters = new FilterAttribute[filterAttributeList.size()];
+        filterAttributeList.toArray(userFilters);
+        ArrayList<? extends Media> mediaToSearch = null;
+
+        ArrayList<Recommendation> mediaToRecommend = new ArrayList(); 
+        
+        if(filmToggled){
+            mediaToSearch = theMovieList.getTheMovieList();
+        } else {
+            mediaToSearch = theBookList.getTheBookList();
+        }
+        
+        //bad algorithm O(n^3) but oh well
+        for(Media item: mediaToSearch){
+            ArrayList<Filterable> mediaFilters = new ArrayList();
+            mediaFilters = item.getTheFilterAttributeList().listOfAttributes;
+            mediaFilters.addAll(item.getTheProductionPersonList().getTheProductionPersonList());
+
+            for(Filterable filter: mediaFilters){
+                for(FilterAttribute att: userFilters){
+                    if(att.getName().equalsIgnoreCase(filter.getName())){
+                        if(att.getSent() == FilterAttribute.Sentiment.POSITIVE){
+                            numPros += 1;
+                        } else {
+                            numPros -= 1;
+                        }
+                    }
+                }
+            }
+            Recommendation temp = new Recommendation(item, numPros, Recommendation.MediaType.FILM);
+            mediaToRecommend.add(temp);
+            numPros = 0;
+        } 
+        
+        mediaToRecommend.sort(new MyRecommendationComp());
+        
+        return mediaToRecommend;
+    }
+    
+    
+    //used to compare recommendations
+    class MyRecommendationComp implements Comparator<Recommendation>{
+ 
+        @Override
+        public int compare(Recommendation o1, Recommendation o2) {
+            if(o1.getStrength()< o2.getStrength()){
+                return 1;
+            } else {
+                return -1;
+            }
+        }
     }
     
     

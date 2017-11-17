@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -102,7 +103,7 @@
                         <RowConstraints maxHeight="55.0" minHeight="6.0" prefHeight="55.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" prefWidth="65.0" text="Previous" GridPane.halignment="LEFT">
+                        <Button fx:id="previousButton" mnemonicParsing="false" onAction="#handlePrevious" prefWidth="65.0" text="Previous" GridPane.halignment="LEFT">
                            <GridPane.margin>
                               <Insets left="15.0" />
                            </GridPane.margin></Button>
@@ -111,11 +112,11 @@
                               <Font size="26.0" />
                            </font>
                         </Label>
-                        <Button mnemonicParsing="false" prefWidth="65.0" text="Next" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
+                        <Button fx:id="nextButton" mnemonicParsing="false" onAction="#handleNext" prefWidth="65.0" text="Next" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
                            <GridPane.margin>
                               <Insets right="15.0" />
                            </GridPane.margin></Button>
-                        <Label prefWidth="18.0" text="1/5" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                        <Label fx:id="recommendationIndex" prefWidth="18.0" text="1/5" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
                      </children>
                   </GridPane>
                   <GridPane prefHeight="217.0" prefWidth="568.0" GridPane.rowIndex="1">
@@ -179,5 +180,18 @@
             <Font size="19.0" />
          </font>
       </Label>
+      <GridPane layoutX="15.0" layoutY="44.0" prefHeight="30.0" prefWidth="103.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="49.0" minWidth="10.0" prefWidth="46.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="57.0" minWidth="10.0" prefWidth="57.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ToggleButton fx:id="bookToggle" mnemonicParsing="false" onAction="#handleToggle" prefWidth="50.0" text="Book" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+            <ToggleButton fx:id="filmToggle" mnemonicParsing="false" onAction="#handleToggle" prefWidth="50.0" selected="true" text="Film" GridPane.halignment="CENTER" />
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>

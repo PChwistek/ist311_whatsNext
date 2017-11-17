@@ -5,26 +5,26 @@
  */
 package whatsnext;
 
-import java.awt.event.KeyEvent;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
+import whatsnext.Recommendation.MediaType;
 
 /**
  * FXML Controller class
@@ -44,10 +44,25 @@ public class RecommendationUICntl implements Initializable {
     private Button removeButton;
     
     @FXML
+    private Button nextButton;
+    
+    @FXML
+    private Button previousButton;
+    
+    @FXML
     private TextField attributeField;
     
     @FXML
+    private ToggleButton filmToggle;
+    
+    @FXML
+    private ToggleButton bookToggle;
+    
+    @FXML
     private Label helpText;
+    
+    @FXML
+    private Label recommendationIndex;
     
     @FXML
     private TableView<FilterAttribute> filterAttributeTable = new TableView();
@@ -68,6 +83,13 @@ public class RecommendationUICntl implements Initializable {
     private AnchorPane recommendationDetail;
   
     private RecommendationCntl theRecCntl = null;
+    
+    private ArrayList<Recommendation> recommendedItems;
+    
+    private boolean filmToggled;
+    
+    private int indexOfRecommendation = -1;
+
 
     /**
      * Initializes the controller class.
@@ -81,6 +103,7 @@ public class RecommendationUICntl implements Initializable {
         helpText.setVisible(true);
         recommendationDetail.setVisible(false);
         searchButton.setDisable(true);
+        filmToggled = true;
         
         attributeNameColumn.setCellValueFactory(new PropertyValueFactory<FilterAttribute,String>("name"));
         attributeSentimentColumn.setCellValueFactory(new PropertyValueFactory<FilterAttribute,String>("sentString"));
@@ -96,12 +119,22 @@ public class RecommendationUICntl implements Initializable {
         
     }   
     
+    @FXML
+    public void handleToggle(){
+        filmToggled = !filmToggled;
+        filmToggle.setSelected(filmToggled);
+        bookToggle.setSelected(!filmToggled);
+    }
     
     @FXML
     public void handleSearchButton(ActionEvent event){
-        //make recommendation
-        helpText.setVisible(false);
-        recommendationDetail.setVisible(true);
+        recommendedItems = theRecCntl.makeRecommendations(filmToggled, listOfFilterAttributes);
+        
+        if(recommendedItems.size() > 0){
+            helpText.setVisible(false);
+            recommendationDetail.setVisible(true);
+            indexOfRecommendation = 0;
+        }
     }
     
     @FXML 
@@ -113,6 +146,43 @@ public class RecommendationUICntl implements Initializable {
             searchButton.setDisable(true);
             removeButton.setDisable(true);
         }
+    }
+    
+    @FXML
+    public void handleNext(ActionEvent event){
+        if(indexOfRecommendation == recommendedItems.size() -1){
+            indexOfRecommendation = 0;
+        } else {
+            indexOfRecommendation += 1;
+        }
+        fillMediaInformation(recommendedItems.get(indexOfRecommendation));
+    }
+    
+    @FXML
+    public void handlePrevious(ActionEvent event){
+        if(indexOfRecommendation == 0){
+            indexOfRecommendation = recommendedItems.size() - 1;
+        } else {
+            indexOfRecommendation -= 1;
+        }
+        
+        fillMediaInformation(recommendedItems.get(indexOfRecommendation));
+    }
+    
+    @FXML
+    public void fillMediaInformation(Recommendation aRecommendation){
+        
+        recommendationIndex.setText((indexOfRecommendation + 1) + "/" + recommendedItems.size());
+        
+        if(aRecommendation.getType() == MediaType.FILM){
+            Movie filmToShow = (Movie) aRecommendation.getMediaToRecommend();
+            
+        } else {
+            Book bookToShow = (Book) aRecommendation.getMediaToRecommend();
+            
+        }
+        
+        
     }
     
     
