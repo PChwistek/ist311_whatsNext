@@ -218,7 +218,7 @@ public class RecommendationUICntl implements Initializable {
             }
         }
 
-        matches.setText("Matched Filter Attributes" + "(" + aRecommendation.getMatchedAttributes().size() + "):" + matched);
+        matches.setText("Match Strength" + "(" + aRecommendation.getStrength() + "); Keywords matched:" + matched);
     }
     
     
