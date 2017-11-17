@@ -16,8 +16,10 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
 
-<AnchorPane id="AnchorPane" prefHeight="702.0" prefWidth="1102.0" stylesheets="@whatsNextStyles.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="whatsnext.RecommendationUICntl">
+<AnchorPane id="AnchorPane" prefHeight="702.0" prefWidth="1102.0" stylesheets="@whatsNextStyles.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="whatsnext.RecommendationUICntl">
    <children>
       <Label layoutX="15.0" layoutY="13.0" text="Recommendation">
          <font>
@@ -88,9 +90,9 @@
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints maxHeight="164.0" minHeight="10.0" prefHeight="82.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="363.0" minHeight="10.0" prefHeight="269.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="342.0" minHeight="10.0" prefHeight="163.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="342.0" minHeight="10.0" prefHeight="65.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="363.0" minHeight="10.0" prefHeight="241.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="342.0" minHeight="10.0" prefHeight="221.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="342.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <GridPane prefHeight="76.0" prefWidth="496.0">
@@ -132,22 +134,24 @@
                         <GridPane prefHeight="275.0" prefWidth="364.0" GridPane.columnIndex="1">
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                            </columnConstraints>
                            <rowConstraints>
+                              <RowConstraints maxHeight="54.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="105.0" vgrow="SOMETIMES" />
                               <RowConstraints vgrow="SOMETIMES" />
                               <RowConstraints vgrow="SOMETIMES" />
                               <RowConstraints vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Label text="Movie Detail" />
-                              <Label text="Movie Detail" GridPane.rowIndex="1" />
-                              <Label text="Movie Detail" GridPane.rowIndex="2" />
+                              <Label fx:id="detail1" text="Movie Detail" wrapText="true" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                              <Label fx:id="detail2" text="Movie Detail" wrapText="true" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                              <Label fx:id="detail3" text="Movie Detail" wrapText="true" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+                              <Label fx:id="detail4" text="Movie Detail" wrapText="true" GridPane.rowIndex="4" GridPane.valignment="TOP" />
                            </children>
                         </GridPane>
                         <ImageView fitHeight="217.0" fitWidth="195.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER">
                            <image>
-                              <Image url="@../../../../../Desktop/Temp-logo.png" />
+                              <Image url="@../tempFilm.png" />
                            </image></ImageView>
                      </children>
                   </GridPane>
@@ -156,8 +160,8 @@
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                      </columnConstraints>
                      <rowConstraints>
-                        <RowConstraints maxHeight="101.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="185.0" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="101.0" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="185.0" minHeight="10.0" prefHeight="127.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="177.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
@@ -169,9 +173,15 @@
                            <padding>
                               <Insets left="15.0" />
                            </padding></Label>
+                        <TextFlow GridPane.rowIndex="2" />
+                        <Text fx:id="mediaDescription" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="536.0" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                           <GridPane.margin>
+                              <Insets left="15.0" />
+                           </GridPane.margin>
+                        </Text>
                      </children>
                   </GridPane>
-                  <Button mnemonicParsing="false" onAction="#handleMediaViewedButton" text="View" GridPane.rowIndex="3" />
+                  <Button mnemonicParsing="false" onAction="#handleMediaViewedButton" text="View" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                </children>
             </GridPane>
          </children>

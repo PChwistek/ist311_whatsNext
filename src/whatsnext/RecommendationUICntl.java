@@ -20,10 +20,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import whatsnext.Recommendation.MediaType;
 
 /**
@@ -62,6 +62,9 @@ public class RecommendationUICntl implements Initializable {
     private ToggleButton filmToggle;
     
     @FXML
+    private Text mediaDescription;
+    
+    @FXML
     private ToggleButton bookToggle;
     
     @FXML
@@ -75,6 +78,18 @@ public class RecommendationUICntl implements Initializable {
     
     @FXML
     private Label matches;
+    
+    @FXML
+    private Label detail1;
+    
+    @FXML
+    private Label detail2;
+    
+    @FXML
+    private Label detail3;
+    
+    @FXML
+    private Label detail4;
     
     @FXML
     private TableView<FilterAttribute> filterAttributeTable = new TableView();
@@ -193,29 +208,21 @@ public class RecommendationUICntl implements Initializable {
         if(aRecommendation.getType() == MediaType.FILM){
             Movie filmToShow = (Movie) aRecommendation.getMediaToRecommend(); //casting is very important here
             theTitle.setText(filmToShow.getTitle());
-            //MOVIE DETAILS
-            
-            
-            
-            
-            
-            
-            
+            String director = filmToShow.getTheProductionPersonList().getByOccupation("Director");
+            String cast = filmToShow.getTheProductionPersonList().getByOccupation("Actor");
+            detail1.setText("Director: " + director);
+            detail2.setText("Cast: " + cast);
+            detail4.setText("Length: " + filmToShow.getFilmLength() + " minutes");
             
         } else {
             Book bookToShow = (Book) aRecommendation.getMediaToRecommend();
             theTitle.setText(bookToShow.getTitle());
-            //BOOK DETAILS 
-            
-            
-            
-            
-            
-           
+            detail1.setText("Author: " + bookToShow.getTheProductionPersonList().getByOccupation("Author"));
+            detail2.setText("Publisher: " + bookToShow.getPublisher());
+            detail4.setText("Length: " + bookToShow.getNumPages() + " pages");
         }
         
         String matched = " ";
-        
         for(int i = 0; i < aRecommendation.getMatchedAttributes().size(); i++){
             if(i + 1 == aRecommendation.getMatchedAttributes().size()){
                 matched = matched + aRecommendation.getMatchedAttributes().get(i).getName() + " ";
@@ -223,7 +230,8 @@ public class RecommendationUICntl implements Initializable {
                 matched = matched + aRecommendation.getMatchedAttributes().get(i).getName() + ", ";
             }
         }
-
+        mediaDescription.setText(aRecommendation.getMediaToRecommend().getDescription());
+        detail3.setText("Date Released: " + aRecommendation.getMediaToRecommend().getReleaseDate());
         matches.setText("Match Strength" + "(" + aRecommendation.getStrength() + "); Keywords matched:" + matched);
     }
     
