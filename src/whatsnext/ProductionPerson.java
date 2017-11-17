@@ -9,7 +9,7 @@ package whatsnext;
  *
  * @author Philz zee Kill
  */
-public class ProductionPerson {
+public class ProductionPerson implements Filterable {
     
     private String firstName;
     private String lastName;
@@ -67,6 +67,16 @@ public class ProductionPerson {
      */
     public void setOccupation(String occupation) {
         this.occupation = occupation;
+    }
+
+    @Override
+    public String getType() {
+        return this.occupation;
+    }
+
+    @Override
+    public String getName() {
+        return this.firstName + " " + this.lastName;
     }
     
     

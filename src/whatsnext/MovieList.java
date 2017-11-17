@@ -23,7 +23,7 @@ public class MovieList {
         
         ArrayList<Movie> tempList = new ArrayList();
         ProductionPersonList tempProductionList = new ProductionPersonList();
-        FilterAttributeList tempAttributeList = new FilterAttributeList();
+        FilterableList tempAttributeList = new FilterableList();
         
         // movie1
         String description = "The lives of two mob hit men, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.";
@@ -44,7 +44,7 @@ public class MovieList {
         pulpFiction.setTheProductionPersonList(tempProductionList);
         
         tempProductionList = new ProductionPersonList(); // reset these variables
-        tempAttributeList = new FilterAttributeList();
+        tempAttributeList = new FilterableList();
         
         // movie 2        
         String description1 = "When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham, the Dark Knight must accept one of the greatest psychological and physical tests of his ability to fight injustice.";
@@ -66,7 +66,7 @@ public class MovieList {
         theDarkKnight.setTheProductionPersonList(tempProductionList);
         
         tempProductionList = new ProductionPersonList(); 
-        tempAttributeList = new FilterAttributeList();
+        tempAttributeList = new FilterableList();
         
         // movie 3
         String description2 = "An insomniac office worker, looking for a way to change his life, crosses paths with a devil-may-care soap maker, forming an underground fight club that evolves into something much, much more.";
@@ -86,7 +86,7 @@ public class MovieList {
         fightClub.setTheProductionPersonList(tempProductionList);
         
         tempProductionList = new ProductionPersonList(); 
-        tempAttributeList = new FilterAttributeList();
+        tempAttributeList = new FilterableList();
         
         //movie 4
         String description3 = "JFK, LBJ, Vietnam, Watergate, and other history unfold through the perspective of an Alabama man with an IQ of 75.";
@@ -106,7 +106,7 @@ public class MovieList {
         forrestGump.setTheProductionPersonList(tempProductionList);
         
         tempProductionList = new ProductionPersonList(); 
-        tempAttributeList = new FilterAttributeList();
+        tempAttributeList = new FilterableList();
         
         // movie 5
         String description4 = "Lion cub and future king Simba searches for his identity. His eagerness to please others and penchant for testing his boundaries sometimes gets him into trouble.";
@@ -127,7 +127,7 @@ public class MovieList {
         theLionKing.setTheProductionPersonList(tempProductionList);
         
         tempProductionList = new ProductionPersonList(); 
-        tempAttributeList = new FilterAttributeList();    
+        tempAttributeList = new FilterableList();    
         
         tempList.add(pulpFiction);
         tempList.add(theDarkKnight);

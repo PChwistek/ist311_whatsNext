@@ -11,10 +11,10 @@ import java.util.ArrayList;
  *
  * @author kristinakvasny
  */
-public class FilterAttributeList {
+public class FilterableList {
     ArrayList<Filterable> listOfAttributes = new ArrayList();
     
-    public FilterAttributeList(){
+    public FilterableList(){
         
     }
     

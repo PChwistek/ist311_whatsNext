@@ -23,12 +23,16 @@ public class RecommendationCntl {
     private String theCurrentUser;
     private UserList theListOfUsers;
     private NavCntl theNavCntl = null;
+    private BookList theBookList = null;
+    private MovieList theMovieList = null;
     
     public RecommendationCntl(Stage aStage){
         this.stage = aStage;
         theNavCntl = NavCntl.getNavCntl(aStage);
         this.theCurrentUser = theNavCntl.getTheCurrentUser();
         this.theListOfUsers = theNavCntl.getTheListOfUsers();
+        theBookList = new BookList();
+        theMovieList = new MovieList();
         setRecScene(stage);
     }
     

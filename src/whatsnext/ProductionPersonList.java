@@ -16,7 +16,7 @@ public class ProductionPersonList {
     private ArrayList<ProductionPerson> theProductionPersonList = null;
     
     public ProductionPersonList(){
-        
+        this.theProductionPersonList = new ArrayList();
     }
 
     public void add(ProductionPerson aPerson){

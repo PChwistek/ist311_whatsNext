@@ -15,7 +15,7 @@ public abstract class Media {
     private String releaseDate;
     private String dateUsed;
     private ProductionPersonList theProductionPersonList;
-    private FilterAttributeList theFilterAttributeList; 
+    private FilterableList theFilterAttributeList; 
     
     
     public Media(String aTitle, String aDescription, String aReleaseDate, String aDateUsed){
@@ -98,14 +98,14 @@ public abstract class Media {
     /**
      * @return the theFilterAttributeList
      */
-    public FilterAttributeList getTheFilterAttributeList() {
+    public FilterableList getTheFilterAttributeList() {
         return theFilterAttributeList;
     }
 
     /**
      * @param theFilterAttributeList the theFilterAttributeList to set
      */
-    public void setTheFilterAttributeList(FilterAttributeList theFilterAttributeList) {
+    public void setTheFilterAttributeList(FilterableList theFilterAttributeList) {
         this.theFilterAttributeList = theFilterAttributeList;
     }
     
