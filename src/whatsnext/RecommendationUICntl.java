@@ -187,10 +187,25 @@ public class RecommendationUICntl implements Initializable {
         if(aRecommendation.getType() == MediaType.FILM){
             Movie filmToShow = (Movie) aRecommendation.getMediaToRecommend(); //casting is very important here
             theTitle.setText(filmToShow.getTitle());
+            //MOVIE DETAILS
+            
+            
+            
+            
+            
+            
+            
             
         } else {
             Book bookToShow = (Book) aRecommendation.getMediaToRecommend();
             theTitle.setText(bookToShow.getTitle());
+            //BOOK DETAILS 
+            
+            
+            
+            
+            
+           
         }
         
         String matched = " ";
