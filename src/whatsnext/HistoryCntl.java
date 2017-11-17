@@ -5,6 +5,7 @@ package whatsnext;
 */
 
 import java.io.IOException;
+import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,6 +20,7 @@ public class HistoryCntl
     private String theCurrentUser;
     private UserList theListOfUsers;
     private NavCntl theNavCntl;
+    private ArrayList<Media> mediaViewedList;
     
     public HistoryCntl(Stage aStage)
     {
@@ -26,6 +28,7 @@ public class HistoryCntl
         theNavCntl = NavCntl.getNavCntl(aStage);
         this.theCurrentUser = theNavCntl.getTheCurrentUser();
         this.theListOfUsers = theNavCntl.getTheListOfUsers();
+        this.mediaViewedList = mediaViewedList;
         setHistoryScene(stage);
     }
     

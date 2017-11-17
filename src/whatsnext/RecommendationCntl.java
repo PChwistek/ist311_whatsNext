@@ -22,12 +22,14 @@ public class RecommendationCntl {
     
     
     private RecommendationUICntl theRecUICntl;
+    private Recommendation theRec;
     private Stage stage;
     private String theCurrentUser;
     private UserList theListOfUsers;
     private NavCntl theNavCntl = null;
     private BookList theBookList = null;
     private MovieList theMovieList = null;
+    protected ArrayList<Media> mediaViewedList;
     
     public RecommendationCntl(Stage aStage){
         this.stage = aStage;
@@ -123,6 +125,11 @@ public class RecommendationCntl {
         return mediaToRecommend;
     }
     
+    public void addToViewed()
+    {
+        System.out.println(theRec.getMediaToRecommend().getTitle());
+        //mediaViewedList.add(theRec.getMediaToRecommend());
+    }
     
     //used to compare recommendations
     class MyRecommendationComp implements Comparator<Recommendation>{

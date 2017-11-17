@@ -53,6 +53,9 @@ public class RecommendationUICntl implements Initializable {
     private Button backToNavButton;
     
     @FXML
+    private Button mediaViewedButton;
+    
+    @FXML
     private TextField attributeField;
     
     @FXML
@@ -261,6 +264,11 @@ public class RecommendationUICntl implements Initializable {
     
     public void setRecommendationCntl(RecommendationCntl aRecCntl){
         theRecCntl = aRecCntl;
+    }
+    
+    public void handleMediaViewedButton(ActionEvent event)
+    {
+        theRecCntl.addToViewed();
     }
     
     public void handleBackToNavButton(ActionEvent event)
