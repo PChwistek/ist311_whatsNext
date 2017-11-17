@@ -6,7 +6,10 @@
 package whatsnext;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Comparator;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -22,14 +25,12 @@ public class RecommendationCntl {
     
     
     private RecommendationUICntl theRecUICntl;
-    private Recommendation theRec;
     private Stage stage;
     private String theCurrentUser;
     private UserList theListOfUsers;
     private NavCntl theNavCntl = null;
     private BookList theBookList = null;
     private MovieList theMovieList = null;
-    protected ArrayList<Media> mediaViewedList;
     
     public RecommendationCntl(Stage aStage){
         this.stage = aStage;
@@ -125,10 +126,13 @@ public class RecommendationCntl {
         return mediaToRecommend;
     }
     
-    public void addToViewed()
+    public void addToViewed(Recommendation theRec)
     {
-        System.out.println(theRec.getMediaToRecommend().getTitle());
-        //mediaViewedList.add(theRec.getMediaToRecommend());
+
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Calendar cal = Calendar.getInstance();
+        theRec.getMediaToRecommend().setDateViewedString(dateFormat.format(cal.getTime()));
+        theNavCntl.getTheListOfUsers().getUserFromList(theNavCntl.getTheCurrentUser()).getProfile().getHistory().add(theRec.getMediaToRecommend());
     }
     
     //used to compare recommendations

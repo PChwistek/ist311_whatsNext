@@ -26,7 +26,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <CheckBox fx:id="incognitoChkBox" layoutX="1008.0" layoutY="18.0" mnemonicParsing="false" text="Incognito" />
+      <CheckBox fx:id="incognitoBox" layoutX="1008.0" layoutY="18.0" mnemonicParsing="false" text="Incognito" />
       <GridPane layoutX="15.0" layoutY="61.0" prefHeight="633.0" prefWidth="385.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

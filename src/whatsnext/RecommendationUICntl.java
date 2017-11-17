@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -66,6 +67,9 @@ public class RecommendationUICntl implements Initializable {
     
     @FXML
     private ToggleButton bookToggle;
+    
+    @FXML
+    private CheckBox incognitoBox;
     
     @FXML
     private Label helpText;
@@ -276,7 +280,11 @@ public class RecommendationUICntl implements Initializable {
     
     public void handleMediaViewedButton(ActionEvent event)
     {
-        theRecCntl.addToViewed();
+        if(!incognitoBox.isSelected()){
+            theRecCntl.addToViewed(recommendedItems.get(indexOfRecommendation));
+        } else {
+            System.out.println("In incognito, not adding to history");
+        }
     }
     
     public void handleBackToNavButton(ActionEvent event)

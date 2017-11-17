@@ -17,8 +17,6 @@ public class HistoryCntl
 {
     private HistoryUICntl theHistoryUICntl;
     private Stage stage;
-    private String theCurrentUser;
-    private UserList theListOfUsers;
     private NavCntl theNavCntl;
     private ArrayList<Media> mediaViewedList;
     
@@ -26,10 +24,9 @@ public class HistoryCntl
     {
         this.stage = aStage;
         theNavCntl = NavCntl.getNavCntl(aStage);
-        this.theCurrentUser = theNavCntl.getTheCurrentUser();
-        this.theListOfUsers = theNavCntl.getTheListOfUsers();
-        this.mediaViewedList = mediaViewedList;
+        this.mediaViewedList = theNavCntl.getTheListOfUsers().getUserFromList(theNavCntl.getTheCurrentUser()).getProfile().getHistory();
         setHistoryScene(stage);
+        System.out.println(mediaViewedList.size());
     }
     
     public void goToNav()
@@ -54,5 +51,19 @@ public class HistoryCntl
             e.printStackTrace();
         }
         
+    }
+
+    /**
+     * @return the mediaViewedList
+     */
+    public ArrayList<Media> getMediaViewedList() {
+        return mediaViewedList;
+    }
+
+    /**
+     * @param mediaViewedList the mediaViewedList to set
+     */
+    public void setMediaViewedList(ArrayList<Media> mediaViewedList) {
+        this.mediaViewedList = mediaViewedList;
     }
 }

@@ -6,9 +6,12 @@ package whatsnext;
 
 import java.net.URL;
 import java.util.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -16,47 +19,37 @@ public class HistoryUICntl implements Initializable
 {
     @FXML
     private Button backToNavButton;
+    
+     @FXML
+    private TableView<Media> historyTable = new TableView();
+    
     @FXML
-    private Label media1;
+    private TableColumn<Media, String> mediaTitleColumn = new TableColumn("Title");
+    
     @FXML
-    private Label media2;
+    private TableColumn<Media, String> mediaDateViewedColumn = new TableColumn("Date Viewed");
+    
     @FXML
-    private Label media3;
-    @FXML
-    private Label media4;
-    @FXML
-    private Label media5;
-    @FXML
-    private Label media6;
-    @FXML
-    private Label media7;
-    @FXML
-    private Label media8;
-    @FXML
-    private Label media9;
-    @FXML
-    private Label media10;
-    @FXML
-    private Label media11;
-    @FXML
-    private Label media12;
+    private ObservableList<Media> listOfViewedMedia = FXCollections.observableArrayList();
     
     private HistoryCntl theHistoryCntl;
-    private ProfileCntl theProfileCntl;
-    private RecommendationCntl theRecCntl;
     private Profile theUserProfile;
-    private ArrayList<Media> mediaViewedList;
     
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
         // TODO
+        mediaTitleColumn.setCellValueFactory(new PropertyValueFactory<Media,String>("title"));
+        mediaDateViewedColumn.setCellValueFactory(new PropertyValueFactory<Media,String>("dateViewed"));
+        historyTable.setItems(listOfViewedMedia);
+
     }
     
     public void setProfileCntl(HistoryCntl aHistoryCntl)
     {
         this.theHistoryCntl = aHistoryCntl;
-        System.out.println("ProfileCntl in histUICntl set");
+        listOfViewedMedia = FXCollections.observableArrayList(theHistoryCntl.getMediaViewedList());
+        historyTable.setItems(listOfViewedMedia);
     }
     
     public void handleBackToNavButton(ActionEvent event)

@@ -13,7 +13,7 @@ public abstract class Media {
     private String title;
     private String description;
     private String releaseDate;
-    private String dateUsed;
+    private String dateViewed;
     private ProductionPersonList theProductionPersonList;
     private FilterableList theFilterAttributeList; 
     
@@ -22,7 +22,7 @@ public abstract class Media {
         this.title = aTitle;
         this.description = aDescription;
         this.releaseDate = aReleaseDate;
-        this.dateUsed = aDateUsed;
+        this.dateViewed = aDateUsed;
     }
 
     /**
@@ -70,15 +70,15 @@ public abstract class Media {
     /**
      * @return the dateUsed
      */
-    public String getDateUsed() {
-        return dateUsed;
+    public String getDateViewed() {
+        return dateViewed;
     }
 
     /**
      * @param dateUsed the dateUsed to set
      */
-    public void setDateUsed(String dateUsed) {
-        this.dateUsed = dateUsed;
+    public void setDateViewedString(String dateViewed) {
+        this.dateViewed = dateViewed;
     }
 
     /**

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Profile {
    
     private ArrayList<Filterable> preferences = new ArrayList();
+    private ArrayList<Media> history = new ArrayList();
     
     private String firstName;
     private String lastName;
@@ -83,5 +84,19 @@ public class Profile {
      */
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    /**
+     * @return the history
+     */
+    public ArrayList<Media> getHistory() {
+        return history;
+    }
+
+    /**
+     * @param history the history to set
+     */
+    public void setHistory(ArrayList<Media> history) {
+        this.history = history;
     }
 }
