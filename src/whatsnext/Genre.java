@@ -5,11 +5,13 @@
  */
 package whatsnext;
 
+import java.io.Serializable;
+
 /**
  *
  * @author kristinakvasny
  */
-public class Genre implements Filterable{
+public class Genre implements Filterable, Serializable{
     
     private String genreName;
     private String genreEmotion;

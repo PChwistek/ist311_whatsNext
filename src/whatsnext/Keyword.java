@@ -5,11 +5,13 @@
  */
 package whatsnext;
 
+import java.io.Serializable;
+
 /**
  *
  * @author kristinakvasny
  */
-public class Keyword implements Filterable {
+public class Keyword implements Filterable, Serializable {
 
     private String keyword;
     private String keywordType;

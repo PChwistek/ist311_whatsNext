@@ -1,8 +1,9 @@
 package whatsnext;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Profile {
+public class Profile implements Serializable{
    
     private ArrayList<Filterable> preferences = new ArrayList();
     private ArrayList<Media> history = new ArrayList();

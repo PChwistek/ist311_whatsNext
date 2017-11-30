@@ -5,13 +5,14 @@
  */
 package whatsnext;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Philz zee Kill
  */
-public class MovieList {
+public class MovieList implements Serializable{
     
     private ArrayList<Movie> theMovieList = null;
     

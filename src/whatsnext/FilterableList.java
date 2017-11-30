@@ -5,13 +5,14 @@
  */
 package whatsnext;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author kristinakvasny
  */
-public class FilterableList {
+public class FilterableList implements Serializable {
     ArrayList<Filterable> listOfAttributes = new ArrayList();
     
     public FilterableList(){

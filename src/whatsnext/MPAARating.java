@@ -5,11 +5,13 @@
  */
 package whatsnext;
 
+import java.io.Serializable;
+
 /**
  *
  * @author kristinakvasny
  */
-public class MPAARating implements Filterable{
+public class MPAARating implements Filterable, Serializable{
 
     private String rating;
     private String ageRating;

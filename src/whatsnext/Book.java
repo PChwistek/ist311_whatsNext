@@ -5,11 +5,13 @@
  */
 package whatsnext;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Zi Yang
  */
-public class Book extends Media {
+public class Book extends Media implements Serializable {
     private String publisher;
     private String edition;
     private int numPages;

@@ -5,11 +5,13 @@
  */
 package whatsnext;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Philz zee Kill
  */
-public class ProductionPerson implements Filterable {
+public class ProductionPerson implements Filterable, Serializable {
     
     private String firstName;
     private String lastName;

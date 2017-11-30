@@ -1,11 +1,12 @@
 package whatsnext;
 
+import java.io.Serializable;
 import java.util.*;
 /**
  *
  * @author kmk6138
  */
-public class User
+public class User implements Serializable
 {
     private String username;
     private String password;
