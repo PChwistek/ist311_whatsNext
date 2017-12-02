@@ -17,6 +17,7 @@ import javafx.stage.Stage;
  */
 public class WhatsNext extends Application {
     
+    private static PersistentDataCntl theDataCntl;
     @Override
     public void start(Stage stage) throws Exception {
         
@@ -29,6 +30,12 @@ public class WhatsNext extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+        try{
+            theDataCntl=PersistentDataCntl.getPersistentDataCollection();
+            theDataCntl.readSerializedDataCollection();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
     
 }

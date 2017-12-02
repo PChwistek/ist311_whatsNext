@@ -23,8 +23,9 @@ public class NavCntl {
     private String theCurrentUser;
     private UserList theListOfUsers;
     private static NavCntl theNavCntl = null;
+    private static PersistentDataCntl theDataCntl;
     
-    private NavCntl(Stage aStage){
+    NavCntl(Stage aStage){
         this.stage = aStage;
         setNavScene(stage);
     }
@@ -51,6 +52,8 @@ public class NavCntl {
     
     public void closeApp(){
         this.stage.close();
+        theDataCntl=PersistentDataCntl.getPersistentDataCollection();
+        theDataCntl.writeSerializedDataCollection();
         System.exit(0);
     }
     
