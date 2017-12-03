@@ -22,7 +22,7 @@ public class WhatsNext extends Application {
     public void start(Stage stage) throws Exception {
         
         LoginCntl theLoginCntl = new LoginCntl(stage);
-        
+        theDataCntl = PersistentDataCntl.getPersistentDataCntl();
     }
 
     /**
@@ -30,12 +30,6 @@ public class WhatsNext extends Application {
      */
     public static void main(String[] args) {
         launch(args);
-        try{
-            theDataCntl=PersistentDataCntl.getPersistentDataCollection();
-            theDataCntl.readSerializedDataCollection();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
     }
     
 }

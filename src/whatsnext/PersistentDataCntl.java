@@ -13,20 +13,25 @@ import java.io.*;
  */
 public class PersistentDataCntl {
     private static PersistentDataCntl thePersistentDataCntl;
-    PersistentDataCollection thePersistentDataCollection;
+    private PersistentDataCollection thePersistentDataCollection;
     private final String External_Data_Path = "";
     private final String Data_File_Name = "AppData.ser";
     
-    public PersistentDataCntl(){
+    private PersistentDataCntl(){
         readSerializedDataCollection();
         if(thePersistentDataCollection == null){
-            thePersistentDataCollection = new PersistentDataCollection();
+            try{
+                thePersistentDataCollection = new PersistentDataCollection();
+                System.out.println("Had to create a new ser file");   
+            } catch (Exception e){
+                e.printStackTrace();
+            }
             writeSerializedDataCollection();
             readSerializedDataCollection();
         }        
     }
     
-    public static PersistentDataCntl getPersistentDataCollection(){
+    public static PersistentDataCntl getPersistentDataCntl(){
         if(thePersistentDataCntl == null){
             thePersistentDataCntl = new PersistentDataCntl();
         }      
@@ -37,7 +42,7 @@ public class PersistentDataCntl {
         return thePersistentDataCollection;
     }
     
-    public void readSerializedDataCollection(){
+    public void readSerializedDataCollection() {
         FileInputStream fis = null;
         ObjectInputStream ois = null;
         String filePath = External_Data_Path + Data_File_Name;       
@@ -47,12 +52,10 @@ public class PersistentDataCntl {
             thePersistentDataCollection = (PersistentDataCollection) ois.readObject();
             ois.close();
         }
-        catch(IOException ioe){
-            ioe.printStackTrace();
+        catch(IOException | ClassNotFoundException ex){
+            System.out.println("Ser file does not exist");
         }
-        catch(ClassNotFoundException cnfe){
-            cnfe.printStackTrace();
-        }
+     
     }
     
     public void writeSerializedDataCollection(){

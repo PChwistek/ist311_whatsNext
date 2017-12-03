@@ -5,11 +5,13 @@
  */
 package whatsnext;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Zi Yang
  */
-public abstract class Media {
+public abstract class Media implements Serializable {
     private String title;
     private String description;
     private String releaseDate;

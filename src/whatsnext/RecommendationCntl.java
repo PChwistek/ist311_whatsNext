@@ -35,15 +35,16 @@ public class RecommendationCntl {
     public RecommendationCntl(Stage aStage){
         this.stage = aStage;
         theNavCntl = NavCntl.getNavCntl(aStage);
-        this.theCurrentUser = theNavCntl.getTheCurrentUser();
+        this.theCurrentUser = theNavCntl.getTheCurrentUser(); //already got from ser in Nav cntl
         this.theListOfUsers = theNavCntl.getTheListOfUsers();
-        theBookList = new BookList();
-        theMovieList = new MovieList();
+        theBookList = PersistentDataCntl.getPersistentDataCntl().getPeristentDataCollection().getTheBookList();
+        theMovieList = PersistentDataCntl.getPersistentDataCntl().getPeristentDataCollection().getTheMovieList();
         setRecScene(stage);
     }
     
     public void goToNav(){
         this.theNavCntl.setNavScene(stage);
+        PersistentDataCntl.getPersistentDataCntl().writeSerializedDataCollection();
     }
     
     public void setRecScene(Stage stage){
@@ -124,6 +125,21 @@ public class RecommendationCntl {
         }
         System.out.println(" ============================== ");
         return mediaToRecommend;
+    }
+    
+    public ArrayList<Filterable> makeHistoryFilter(){
+        
+        ArrayList<Filterable> tempList = new ArrayList();
+        
+        ArrayList<Media> theHistory = theListOfUsers.getUserFromList(theCurrentUser).getProfile().getHistory();
+        
+        for(Media m: theHistory){
+            for(Filterable f: m.getTheFilterAttributeList().listOfAttributes){
+                tempList.add(f);
+            }
+        }
+        
+        return tempList;
     }
     
     public void addToViewed(Recommendation theRec)

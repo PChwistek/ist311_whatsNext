@@ -5,11 +5,13 @@
  */
 package whatsnext;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Zi Yang
  */
-public class Movie extends Media {
+public class Movie extends Media implements Serializable {
     
     private String filmStudio;
     private int filmLength;

@@ -20,18 +20,16 @@ import javafx.stage.Stage;
 public class LoginCntl {
     
     private UserList theListOfUsers;
-    
     private LoginUICntl theLoginUICntl;
-    
     private CreateAccountUICntl theCreateAccountUICntl;
-    
     private Stage stage;
-    
     private String theCurrentUser;
+    private PersistentDataCollection thePersistentDataCollection;
    
     
     public LoginCntl(Stage aStage){
-        theListOfUsers = new UserList();
+        this.thePersistentDataCollection = PersistentDataCntl.getPersistentDataCntl().getPeristentDataCollection();
+        theListOfUsers = thePersistentDataCollection.getTheUserList();
         this.stage = aStage;
         setLoginScene(stage);
     }
@@ -82,6 +80,7 @@ public class LoginCntl {
     
     public void closeApp(){
         stage.close();
+        PersistentDataCntl.getPersistentDataCntl().writeSerializedDataCollection();
         System.exit(0);
     }
     
@@ -89,6 +88,7 @@ public class LoginCntl {
         User userToCreate = new User(username, password);
         boolean success = theListOfUsers.addUserTolist(userToCreate);
         setTheCurrentUser(username);
+        thePersistentDataCollection.setTheUserList(theListOfUsers);
         return success;
     }
     

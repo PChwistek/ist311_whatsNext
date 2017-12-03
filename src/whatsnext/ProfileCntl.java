@@ -33,6 +33,7 @@ public class ProfileCntl {
     
     public void goToNav(){
         this.theNavCntl.setNavScene(stage);
+        PersistentDataCntl.getPersistentDataCntl().writeSerializedDataCollection();
     }
     
     public void setProfileScene(Stage stage){

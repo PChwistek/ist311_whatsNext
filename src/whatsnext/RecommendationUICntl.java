@@ -11,6 +11,7 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -40,6 +41,9 @@ public class RecommendationUICntl implements Initializable {
     
     @FXML
     private Button searchButton;
+    
+    @FXML
+    private Button getHistoryFilterButton;
     
     @FXML
     private Button removeButton;
@@ -239,29 +243,43 @@ public class RecommendationUICntl implements Initializable {
         matches.setText("Match Strength" + "(" + aRecommendation.getStrength() + "); Keywords matched:" + matched);
     }
     
+    @FXML
+    public void handleHistoryFilterButton(Event event){
+        ArrayList<Filterable> filterItems = theRecCntl.makeHistoryFilter();
+        
+        for(Filterable f: filterItems){
+            FilterAttribute temp = new FilterAttribute(f.getName(), FilterAttribute.Sentiment.POSITIVE);
+            addToTable(temp);
+        }
+    }
     
     public void handleAddToTable(){
-        
+                
         FilterAttribute temp = null;
-        
-        boolean inTable = false;
-        
+
         if(sentimentComboBox.getValue() == "Positive"){
             temp = new FilterAttribute(attributeField.getText(), FilterAttribute.Sentiment.POSITIVE);
         } else {
             temp = new FilterAttribute(attributeField.getText(), FilterAttribute.Sentiment.NEGATIVE);
         }
         
+        addToTable(temp);
+
+    }
+    
+    public void addToTable(FilterAttribute attribute){
+        boolean inTable = false;
         int counter = 0;
+        
         while(!inTable && counter < filterAttributeTable.getItems().size()){
-            if(temp.getName().equals(filterAttributeTable.getItems().get(counter).getName())){
+            if(attribute.getName().equals(filterAttributeTable.getItems().get(counter).getName())){
                 inTable = true;
             } 
             counter++;
         }
         
         if(!inTable){
-            filterAttributeTable.getItems().add(temp);
+            filterAttributeTable.getItems().add(attribute);
             System.out.println(attributeField.getText());
         }
         

@@ -19,11 +19,12 @@ public class HistoryCntl
     private Stage stage;
     private NavCntl theNavCntl;
     private ArrayList<Media> mediaViewedList;
-    
+    private PersistentDataCntl theDataCntl;
     public HistoryCntl(Stage aStage)
     {
         this.stage = aStage;
         theNavCntl = NavCntl.getNavCntl(aStage);
+        this.theDataCntl = PersistentDataCntl.getPersistentDataCntl();
         this.mediaViewedList = theNavCntl.getTheListOfUsers().getUserFromList(theNavCntl.getTheCurrentUser()).getProfile().getHistory();
         setHistoryScene(stage);
         System.out.println(mediaViewedList.size());
@@ -32,6 +33,7 @@ public class HistoryCntl
     public void goToNav()
     {
         theNavCntl.setNavScene(this.stage);
+        theDataCntl.writeSerializedDataCollection();
     }
     
     public void setHistoryScene(Stage stage)
