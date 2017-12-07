@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 /**
@@ -34,14 +35,22 @@ public class ProfileUICntl implements Initializable {
     private TextField email;
     
     @FXML
+    private TextField mergeUsername;
+    
+    @FXML
+    private PasswordField mergePass;
+    
+    @FXML
     private Button cancelButton;
+    
+    @FXML
+    private Button mergeButton;
     
     
     private ProfileCntl theProfileCntl;
     
     private Profile theUserProfile;
-    
-    
+   
     
     public void setProfileCntl(ProfileCntl aProfileCntl){
         this.theProfileCntl = aProfileCntl;
@@ -52,6 +61,7 @@ public class ProfileUICntl implements Initializable {
         email.setText(theUserProfile.getEmail());
     }
     
+    @FXML
     public void handleSubmitButton(ActionEvent event){
         theUserProfile.setFirstName(firstName.getText());
         theUserProfile.setLastName(lastName.getText());
@@ -61,13 +71,29 @@ public class ProfileUICntl implements Initializable {
         
     }
     
+    @FXML
     public void handleCancelButton(ActionEvent event){
         theProfileCntl.goToNav();
+    }
+    
+    @FXML
+    public void handleMergeButton(ActionEvent event){
+        
+    }
+    
+    @FXML
+    public void checkIfCanMerge(){
+        if(!mergeUsername.getText().isEmpty() && !mergePass.getText().isEmpty()){
+            mergeButton.setDisable(false);
+        } else {
+            mergeButton.setDisable(true);
+        }
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+    
     }    
     
 }
