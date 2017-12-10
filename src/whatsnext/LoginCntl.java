@@ -70,8 +70,7 @@ public class LoginCntl {
         if(theListOfUsers.verifyLogin(aUsername, aPassword)){
             setTheCurrentUser(aUsername);
             NavCntl theNavCntl = NavCntl.getNavCntl(this.stage);
-            theNavCntl.setTheCurrentUser(theCurrentUser); //this is temporary as we don't yet have a persistent data controller
-            theNavCntl.setTheListOfUsers(theListOfUsers); // same as above
+            theNavCntl.setTheCurrentUser(theCurrentUser); 
             return true;
         }             
         
@@ -89,6 +88,7 @@ public class LoginCntl {
         boolean success = theListOfUsers.addUserTolist(userToCreate);
         setTheCurrentUser(username);
         thePersistentDataCollection.setTheUserList(theListOfUsers);
+        PersistentDataCntl.getPersistentDataCntl().writeSerializedDataCollection();
         return success;
     }
     

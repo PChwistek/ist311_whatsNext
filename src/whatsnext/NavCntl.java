@@ -22,16 +22,21 @@ public class NavCntl {
     private NavUICntl theNavUICntl;
     private String theCurrentUser;
     private UserList theListOfUsers;
+    private MergedProfile theMergedProfile = new MergedProfile();
+
     private static NavCntl theNavCntl = null;
     private static PersistentDataCntl theDataCntl;
     
     public NavCntl(){
         this.theDataCntl = PersistentDataCntl.getPersistentDataCntl();
+        theListOfUsers = theDataCntl.getPeristentDataCollection().getTheUserList();
     }
     
-    NavCntl(Stage aStage){
+    public NavCntl(Stage aStage){
         this.stage = aStage;
         setNavScene(stage);
+        this.theDataCntl = PersistentDataCntl.getPersistentDataCntl();
+        theListOfUsers = theDataCntl.getPeristentDataCollection().getTheUserList();
     }
     
     public static NavCntl getNavCntl(Stage aStage){
@@ -101,5 +106,19 @@ public class NavCntl {
      */
     public void setTheListOfUsers(UserList theListOfUsers) {
         this.theListOfUsers = theListOfUsers;
+    }
+
+    /**
+     * @return the theMergedProfile
+     */
+    public MergedProfile getTheMergedProfile() {
+        return theMergedProfile;
+    }
+
+    /**
+     * @param theMergedProfile the theMergedProfile to set
+     */
+    public void setTheMergedProfile(MergedProfile theMergedProfile) {
+        this.theMergedProfile = theMergedProfile;
     }
 }

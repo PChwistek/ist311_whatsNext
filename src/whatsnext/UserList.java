@@ -17,6 +17,7 @@ public class UserList implements Serializable
     public boolean verifyLogin(String usernameInput, String passwordInput)
     {
         for(User aUser: listOfUsers){
+            System.out.println(aUser.getUsername());
             if(aUser.isEqual(usernameInput, passwordInput)){
                 return true;
             }

@@ -139,6 +139,14 @@ public class RecommendationCntl {
             }
         }
         
+        if(theNavCntl.getTheMergedProfile().getHistory().size() > 0){
+            for(Media m: theNavCntl.getTheMergedProfile().getHistory()){
+               for(Filterable f: m.getTheFilterAttributeList().listOfAttributes){
+                   tempList.add(f);
+               }
+            }
+        }
+        
         return tempList;
     }
     

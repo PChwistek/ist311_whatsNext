@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="491.0" prefWidth="446.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="whatsnext.ProfileUICntl">
+<AnchorPane id="AnchorPane" prefHeight="491.0" prefWidth="446.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="whatsnext.ProfileUICntl">
    <children>
       <GridPane layoutX="25.0" layoutY="22.0" prefHeight="360.0" prefWidth="408.0">
         <columnConstraints>
@@ -71,7 +71,12 @@
                </GridPane.margin>
             </Label>
             <PasswordField fx:id="mergePass" onAction="#checkIfCanMerge" onKeyTyped="#checkIfCanMerge" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <Button fx:id="mergeButton" disable="true" mnemonicParsing="false" text="Merge" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
+            <Button fx:id="mergeButton" disable="true" mnemonicParsing="false" onAction="#handleMergeButton" text="Merge" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
+            <Label fx:id="mergedLabel" text="Merged!" visible="false" GridPane.halignment="CENTER" GridPane.rowIndex="7">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children>
       </GridPane>
       <GridPane layoutX="146.0" layoutY="441.0" prefHeight="30.0" prefWidth="166.0">

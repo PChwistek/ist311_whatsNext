@@ -42,7 +42,7 @@ public class ProfileCntl {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfileUI.fxml"));
             Parent login = loader.load();
             theProfileUICntl = loader.getController();
-                theProfileUICntl.setProfileCntl(this);
+            theProfileUICntl.setProfileCntl(this);
             Scene scene = new Scene(login);
             stage.setScene(scene);
             stage.show();
@@ -59,6 +59,30 @@ public class ProfileCntl {
     
     public void updateCurrentUserProfile(Profile profileToSet){
         theListOfUsers.getUserFromList(theCurrentUser).setProfile(profileToSet);
+    }
+    
+    public boolean loginMerge(String mergeUser, String mergePass){
+        boolean success = false;
+        
+        if(theListOfUsers.verifyLogin(mergeUser, mergePass)){
+            theNavCntl.setTheMergedProfile(new MergedProfile(theListOfUsers.getUserFromList(mergeUser)));
+            success = true;
+        }
+        
+        return success;
+    }
+
+    /**
+     * @return the theMergedProfile
+     */
+    public MergedProfile getTheMergedProfile() {
+        return theNavCntl.getTheMergedProfile();
+    }
+    /**
+     * @param theMergedProfile the theMergedProfile to set
+     */
+    public void setTheMergedProfile(MergedProfile theMergedProfile) {
+        theNavCntl.setTheMergedProfile(theMergedProfile);
     }
     
 }

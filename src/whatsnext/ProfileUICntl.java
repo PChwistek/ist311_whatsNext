@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -46,6 +47,8 @@ public class ProfileUICntl implements Initializable {
     @FXML
     private Button mergeButton;
     
+    @FXML
+    private Label mergedLabel;
     
     private ProfileCntl theProfileCntl;
     
@@ -59,6 +62,12 @@ public class ProfileUICntl implements Initializable {
         firstName.setText(theUserProfile.getFirstName());
         lastName.setText(theUserProfile.getLastName());
         email.setText(theUserProfile.getEmail());
+        mergeUsername.setText(theProfileCntl.getTheMergedProfile().getUsername());
+        mergePass.setText(theProfileCntl.getTheMergedProfile().getPassword());
+        
+        if(!mergeUsername.getText().equals("")){
+            mergedLabel.setVisible(true);
+        }
     }
     
     @FXML
@@ -79,6 +88,14 @@ public class ProfileUICntl implements Initializable {
     @FXML
     public void handleMergeButton(ActionEvent event){
         
+        String username = mergeUsername.getText();
+        String password = mergePass.getText();
+        
+        if(theProfileCntl.loginMerge(username, password)){
+            mergedLabel.setVisible(true);
+            mergeButton.setDisable(true);
+        }
+     
     }
     
     @FXML
@@ -88,6 +105,7 @@ public class ProfileUICntl implements Initializable {
         } else {
             mergeButton.setDisable(true);
         }
+        mergedLabel.setVisible(false);
     }
     
     @Override
