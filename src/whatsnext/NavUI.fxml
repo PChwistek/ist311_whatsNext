@@ -30,7 +30,7 @@
         </rowConstraints>
          <children>
             <Button fx:id="theRecommendationButton" mnemonicParsing="false" onAction="#handleRecommendationButton" text="Find Recommendations" GridPane.halignment="CENTER" />
-            <Button mnemonicParsing="false" prefWidth="141.0" text="Inbox" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <Button mnemonicParsing="false" onAction="#handleMessagesButton" prefWidth="141.0" text="Messages" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
             <Button fx:id="theProfileButton" mnemonicParsing="false" onAction="#handleProfileButton" prefWidth="141.0" text="Profile" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
             <Button fx:id="theHistoryButton" mnemonicParsing="false" onAction="#handleHistoryButton" prefWidth="141.0" text="History" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
             <Button fx:id="theLogoutButton" mnemonicParsing="false" onAction="#handleCloseButton" prefWidth="141.0" text="Logout" GridPane.halignment="CENTER" GridPane.rowIndex="4" />

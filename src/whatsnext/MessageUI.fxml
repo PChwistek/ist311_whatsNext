@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="702.0" prefWidth="1102.0" stylesheets="@whatsNextStyles.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="whatsnext.MessageUIController">
+<AnchorPane id="AnchorPane" prefHeight="702.0" prefWidth="1102.0" stylesheets="@whatsNextStyles.css" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="whatsnext.MessageUICntl">
    <children>
       <Label layoutX="15.0" layoutY="13.0" text="Messages">
          <font>
@@ -40,7 +40,7 @@
                <children>
                   <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="74.0" text="Inbox" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
                   <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="74.0" text="Outbox" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
-                  <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="137.0" text="Compose Message" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#handleComposeButton" prefHeight="31.0" prefWidth="137.0" text="Compose Message" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <TableView fx:id="filterAttributeTable" prefHeight="444.0" prefWidth="912.0" GridPane.rowIndex="1">

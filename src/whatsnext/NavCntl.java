@@ -59,6 +59,10 @@ public class NavCntl {
         RecommendationCntl theRecCntl = new RecommendationCntl(this.stage);
     }
     
+    public void goToMessages(){
+        MessageCntl theMessageCntl = new MessageCntl(this.stage);
+    }
+    
     public void closeApp(){
         this.stage.close();
         PersistentDataCntl.getPersistentDataCntl().writeSerializedDataCollection();

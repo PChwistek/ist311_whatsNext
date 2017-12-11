@@ -58,6 +58,11 @@ public class NavUICntl implements Initializable {
     }
     
     @FXML
+    public void handleMessagesButton(ActionEvent event){
+        theNavCntl.goToMessages();
+    }
+    
+    @FXML
     public void handleCloseButton(ActionEvent event){
         theNavCntl.closeApp();
     }

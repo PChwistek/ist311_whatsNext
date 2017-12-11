@@ -5,14 +5,19 @@
  */
 package whatsnext;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -29,7 +34,12 @@ public class MessageUICntl implements Initializable {
     private TableColumn<?, ?> attributeSentimentColumn;
     @FXML
     private Button removeButton;
-
+    
+    private MessageCntl theMessageCntl;
+    
+    private Stage composeStage;
+    
+    private MessageComposeUICntl theMessageComposeUICntl;
     /**
      * Initializes the controller class.
      */
@@ -40,10 +50,40 @@ public class MessageUICntl implements Initializable {
 
     @FXML
     private void removeFromTable(ActionEvent event) {
+        
+    }
+    
+    @FXML
+    private void handleComposeButton(ActionEvent event){
+        
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("MessageComposeUI.fxml"));
+        composeStage = new Stage();
+        try {
+            Parent login = loader.load();
+            theMessageComposeUICntl = loader.getController();
+            theMessageComposeUICntl.setTheMessageUICntl(this);
+            Scene scene = new Scene(login);
+            composeStage.setScene(scene);
+            composeStage.showAndWait();
+
+        } catch (IOException ex) {
+            // TODO: handle error
+            return;
+        }
+    }
+    
+    public void closeCompose(){
+        composeStage.close();
     }
 
     @FXML
     private void handleBackToNavButton(ActionEvent event) {
+        theMessageCntl.goToNav();
+    }
+    
+    public void setMessageCntl(MessageCntl aMessageCntl){
+        this.theMessageCntl = aMessageCntl;
     }
     
 }
