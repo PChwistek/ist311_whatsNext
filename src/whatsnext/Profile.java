@@ -7,6 +7,8 @@ public class Profile implements Serializable{
    
     private ArrayList<Filterable> preferences = new ArrayList();
     private ArrayList<Media> history = new ArrayList();
+    private ArrayList<Message> inbox = new ArrayList();
+    private ArrayList<Message> outbox = new ArrayList();
     
     private String firstName;
     private String lastName;
@@ -99,5 +101,21 @@ public class Profile implements Serializable{
      */
     public void setHistory(ArrayList<Media> history) {
         this.history = history;
+    }
+
+    public ArrayList<Message> getInbox() {
+        return inbox;
+    }
+
+    public void setInbox(ArrayList<Message> inbox) {
+        this.inbox = inbox;
+    }
+
+    public ArrayList<Message> getOutbox() {
+        return outbox;
+    }
+
+    public void setOutbox(ArrayList<Message> outbox) {
+        this.outbox = outbox;
     }
 }
