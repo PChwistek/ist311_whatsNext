@@ -126,9 +126,6 @@ public class RecommendationUICntl implements Initializable {
     private int indexOfRecommendation = -1;
 
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

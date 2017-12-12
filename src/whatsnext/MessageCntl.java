@@ -106,6 +106,24 @@ public class MessageCntl {
     public void setTheCurrentUser(String theCurrentUser) {
         this.theCurrentUser = theCurrentUser;
     }
+
+    public ArrayList<Message> getInbox() {
+        return inbox;
+    }
+
+    public void setInbox(ArrayList<Message> inbox) {
+        this.inbox = inbox;
+    }
+
+    public ArrayList<Message> getOutbox() {
+        return outbox;
+    }
+
+    public void setOutbox(ArrayList<Message> outbox) {
+        this.outbox = outbox;
+    }
+
+
     
     
 }

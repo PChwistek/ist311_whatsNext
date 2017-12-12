@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import whatsnext.Recommendation.MediaType;
@@ -43,7 +44,7 @@ public class MessageComposeUICntl implements Initializable {
     private TextField mediaField;
     
     @FXML
-    private TextField textBody;
+    private TextArea textBody;
     
     private MessageUICntl theMessageUICntl;
     
@@ -57,6 +58,7 @@ public class MessageComposeUICntl implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         film.setToggleGroup(radioButtons);
         book.setToggleGroup(radioButtons);
+        radioButtons.selectToggle(film);
     }    
     
     public void setTheMessageUICntl(MessageUICntl aMessageUICntl){
@@ -98,6 +100,7 @@ public class MessageComposeUICntl implements Initializable {
             alert.showAndWait();
         }
     }
+   
     
     private Media requestCheckMediaExists(String title, MediaType type){
         return theMessageUICntl.getTheMessageCntl().checkMediaExists(title, type);

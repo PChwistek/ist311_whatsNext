@@ -38,16 +38,38 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="74.0" text="Inbox" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="74.0" text="Outbox" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
                   <Button mnemonicParsing="false" onAction="#handleComposeButton" prefHeight="31.0" prefWidth="137.0" text="Compose Message" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                  <GridPane GridPane.rowIndex="1">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#handleInbox" prefHeight="32.0" prefWidth="74.0" text="Inbox" GridPane.halignment="LEFT" />
+                        <Button mnemonicParsing="false" onAction="#handleOutbox" prefHeight="31.0" prefWidth="74.0" text="Outbox" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
+                     </children>
+                  </GridPane>
+                  <Label>
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="box" layoutX="10.0" layoutY="18.0">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
                </children>
             </GridPane>
-            <TableView fx:id="filterAttributeTable" prefHeight="444.0" prefWidth="912.0" GridPane.rowIndex="1">
+            <TableView fx:id="messagesTable" prefHeight="444.0" prefWidth="912.0" GridPane.rowIndex="1">
               <columns>
-                <TableColumn fx:id="attributeNameColumn" prefWidth="180.0" text="Sender" />
-                <TableColumn fx:id="attributeSentimentColumn" prefWidth="204.0" text="Media" />
-                  <TableColumn prefWidth="525.0" text="Message Body" />
+                <TableColumn fx:id="messageSenderColumn" prefWidth="180.0" text="Sender" />
+                <TableColumn fx:id="mediaTitleColumn" prefWidth="204.0" text="Media" />
+                  <TableColumn fx:id="messageBodyColumn" prefWidth="525.0" text="Message Body" />
               </columns>
             </TableView>
             <GridPane GridPane.rowIndex="2">

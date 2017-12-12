@@ -16,6 +16,7 @@ public class Message implements Serializable{
     private String recipient;
     private String sender;
     private String bodyText;
+    private String mediaTitle;
     private Recommendation theRecommendation;
     
     public Message(String aRecipient, String aSender, String aBodyText, Recommendation aRec){
@@ -23,6 +24,7 @@ public class Message implements Serializable{
         this.sender = aSender;
         this.bodyText = aBodyText;
         this.theRecommendation = aRec;
+        this.mediaTitle = this.theRecommendation.getMediaToRecommend().getTitle();
     }
 
     /**
@@ -79,6 +81,20 @@ public class Message implements Serializable{
      */
     public void setTheRecommendation(Recommendation theRecommendation) {
         this.theRecommendation = theRecommendation;
+    }
+
+    /**
+     * @return the mediaTitle
+     */
+    public String getMediaTitle() {
+        return mediaTitle;
+    }
+
+    /**
+     * @param mediaTitle the mediaTitle to set
+     */
+    public void setMediaTitle(String mediaTitle) {
+        this.mediaTitle = mediaTitle;
     }
     
 }
