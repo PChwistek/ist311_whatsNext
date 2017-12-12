@@ -126,4 +126,13 @@ public class BookList implements Serializable{
         this.theBookList = theBookList;
     }
     
+    public Book findBook(String title){
+        for(Book temp: theBookList){
+            if(temp.getTitle().equals(title)){
+                return temp;
+            }
+        }
+        System.out.println("book not found in list");
+        return null;
+    }
 }

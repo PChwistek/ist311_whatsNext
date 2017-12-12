@@ -5,6 +5,7 @@
  */
 package whatsnext;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -12,9 +13,9 @@ import java.util.Comparator;
  *
  * @author Philz zee Kill
  */
-public class Recommendation {
+public class Recommendation implements Serializable {
     
-    private Media mediaToRecommend;
+    private Media mediaToRecommend = null;
     private int strength;
     private MediaType type;
     private ArrayList<FilterAttribute> matchedAttributes = null;

@@ -28,10 +28,10 @@
         </rowConstraints>
          <children>
             <Button mnemonicParsing="false" onAction="#handleCancelButton" prefWidth="60.0" text="Cancel" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-            <Button mnemonicParsing="false" prefWidth="60.0" text="Send" GridPane.halignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#handleSend" prefWidth="60.0" text="Send" GridPane.halignment="CENTER" />
          </children>
       </GridPane>
-      <TextField layoutX="50.0" layoutY="168.0" prefHeight="148.0" prefWidth="275.0" />
+      <TextField fx:id="textBody" layoutX="50.0" layoutY="168.0" prefHeight="148.0" prefWidth="275.0" />
       <GridPane layoutX="50.0" layoutY="53.0" prefHeight="101.0" prefWidth="275.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="133.0" minWidth="10.0" prefWidth="80.0" />
@@ -59,8 +59,8 @@
                   <RadioButton fx:id="book" mnemonicParsing="false" text="Book" GridPane.columnIndex="1" />
                </children>
             </GridPane>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" />
+            <TextField fx:id="mediaField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="recipientField" GridPane.columnIndex="1" />
          </children>
       </GridPane>
     </children>

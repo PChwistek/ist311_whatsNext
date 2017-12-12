@@ -31,7 +31,6 @@ public class UserList implements Serializable
         listOfUsers.add(new User("kristina", "kvasny.pass"));
         listOfUsers.add(new User("phil", "chwistek.pass"));
         listOfUsers.add(new User("zi", "yang.pass"));
-        
         System.out.println("Populated: " + listOfUsers.size());
         return listOfUsers;
     }
@@ -52,7 +51,7 @@ public class UserList implements Serializable
     public User getUserFromList(String username){
         for(User temp: listOfUsers){
             if(temp.getUsername().equals(username)){
-                return new User(temp.getUsername(), temp.getPassword(), temp.getProfile());
+                return temp;
             }
         }
         System.out.println("user not found in list");

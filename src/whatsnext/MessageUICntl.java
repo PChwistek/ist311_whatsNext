@@ -86,4 +86,8 @@ public class MessageUICntl implements Initializable {
         this.theMessageCntl = aMessageCntl;
     }
     
+    public MessageCntl getTheMessageCntl(){
+        return this.theMessageCntl;
+    }
+    
 }

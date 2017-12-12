@@ -138,6 +138,16 @@ public class MovieList implements Serializable{
         
         return tempList;
     }
+    
+    public Movie findMovie(String title){
+        for(Movie temp: theMovieList){
+            if(temp.getTitle().equals(title)){
+                return temp;
+            }
+        }
+        System.out.println("movie not found in list");
+        return null;
+    }
 
     /**
      * @return the theMovieList

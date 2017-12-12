@@ -11,13 +11,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import whatsnext.Recommendation.MediaType;
 
 /**
  *
  * @author Philz zee Kill
  */
 public class MessageCntl {
-    
+
     private MessageUICntl theMessageUICntl;
     private Stage stage;
     private NavCntl theNavCntl;
@@ -36,6 +37,12 @@ public class MessageCntl {
         this.inbox = theNavCntl.getTheListOfUsers().getUserFromList(theCurrentUser).getProfile().getInbox();
         this.outbox = theNavCntl.getTheListOfUsers().getUserFromList(theCurrentUser).getProfile().getOutbox();
         setMessageUI(this.stage);
+        
+        System.out.println(theListOfUsers.getUserFromList(theCurrentUser).getProfile().getInbox().size());
+        
+    }
+    
+    public MessageCntl(){
         
     }
     
@@ -59,6 +66,45 @@ public class MessageCntl {
     public void goToNav(){
         this.theNavCntl.setNavScene(stage);
         PersistentDataCntl.getPersistentDataCntl().writeSerializedDataCollection();
+    }
+    
+    public Media checkMediaExists(String title, MediaType type){
+        if(type == MediaType.FILM){
+            return PersistentDataCntl.getPersistentDataCntl().getPeristentDataCollection().getTheMovieList().findMovie(title);
+        } else {
+            return PersistentDataCntl.getPersistentDataCntl().getPeristentDataCollection().getTheBookList().findBook(title);
+        }
+    }
+    
+    public boolean checkUserExists(String username){
+        if(theListOfUsers.getUserFromList(username) != null){
+            return true;
+        }
+        return false;
+    }
+    
+    public void sendMessage(Message aMessage){
+        
+        String recipient = aMessage.getRecipient();
+        String sender = aMessage.getSender();
+        theListOfUsers.getUserFromList(recipient).getProfile().getInbox().add(aMessage);
+        theListOfUsers.getUserFromList(sender).getProfile().getOutbox().add(aMessage);
+        PersistentDataCntl.getPersistentDataCntl().writeSerializedDataCollection();
+        System.out.println("Sent message!");
+    }
+    
+       /**
+     * @return the theCurrentUser
+     */
+    public String getTheCurrentUser() {
+        return theCurrentUser;
+    }
+
+    /**
+     * @param theCurrentUser the theCurrentUser to set
+     */
+    public void setTheCurrentUser(String theCurrentUser) {
+        this.theCurrentUser = theCurrentUser;
     }
     
     
